@@ -10,29 +10,27 @@ using NaisCompanion.Services;
 
 namespace NaisCompanion.ViewModels
 {
-    public class BaseViewModel<T> : INotifyPropertyChanged where T : IBaseModel
+    public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<T> DataStore => DependencyService.Get<IDataStore<T>>() ?? new MockDataStore<T>();
-
-        bool isBusy = false;
+        private bool isBusy = false;
         public bool IsBusy
         {
             get { return isBusy; }
             set { SetProperty(ref isBusy, value); }
         }
 
-        string title = string.Empty;
+        private string title = string.Empty;
         public string Title
         {
             get { return title; }
             set { SetProperty(ref title, value); }
         }
 
-        protected bool SetProperty<F>(ref F backingStore, F value,
+        protected bool SetProperty<T>(ref T backingStore, T value,
             [CallerMemberName]string propertyName = "",
             Action onChanged = null)
         {
-            if (EqualityComparer<F>.Default.Equals(backingStore, value))
+            if (EqualityComparer<T>.Default.Equals(backingStore, value))
                 return false;
 
             backingStore = value;

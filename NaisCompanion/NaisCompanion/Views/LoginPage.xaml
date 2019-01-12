@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NaisCompanion.Views.LoginPage"
+             Title="{Binding Title}"
+             BackgroundImage="login.jpg">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#aadddddd"
+                     Padding="20"
+                     Margin="35"
+                     HorizontalOptions="Fill"
+                     VerticalOptions="Center">
+            <Label Text="Your username:"
+                   FontSize="Large"
+                   Opacity="0.9"
+                   HorizontalOptions="Center" />
+            <Entry Text="{Binding UserName}"
+                   Keyboard="Text"
+                   HorizontalTextAlignment="Center"
+                   Margin="20, 10, 20, 10"
+                   Opacity="0.9"
+                   HorizontalOptions="Fill" />
+            <Label Text="{Binding Timeout, StringFormat='Duration of your visit: {0} days'}"
+                   FontSize="Medium"
+                   Opacity="0.9"
+                   HorizontalOptions="Center" />
+            <Stepper Maximum="39" Minimum="1" Increment="1"
+                     Value="{Binding Timeout}"
+                     Opacity="0.9"
+                     HorizontalOptions="Center" />
+            <Button Text="Begin tour"
+                    FontSize="Medium"
+                    Command="{Binding BeginTourCommand}"
+                    Opacity="0.9"
+                    HorizontalOptions="Center" />
+            <Button Text="Continue tour"
+                    FontSize="Medium"
+                    Command="{Binding ContinueTourCommand}"
+                    Opacity="0.9"
+                    HorizontalOptions="Center" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

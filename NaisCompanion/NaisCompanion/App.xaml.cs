@@ -13,8 +13,7 @@ namespace NaisCompanion
         {
             InitializeComponent();
 
-
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new LoginPage()); // prethodno bio mainpage
         }
 
         protected override void OnStart()

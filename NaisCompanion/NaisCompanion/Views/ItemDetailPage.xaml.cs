@@ -26,7 +26,7 @@ namespace NaisCompanion.Views
 
             var item = new TouristLocation
             {
-                Text = "Item 1",
+                //Text = "Item 1", [OBRISATI]
                 Description = "This is an item description."
             };
 

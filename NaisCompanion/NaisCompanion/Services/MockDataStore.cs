@@ -10,14 +10,8 @@ namespace NaisCompanion.Services
     {
         public List<T> Items { get; set; }
 
-        public MockDataStore() { }
+        public MockDataStore(List<T> items) { Items = items; }
         
-        public async Task<bool> SetItems(List<T> items)
-        {
-            Items = items;
-            return await Task.FromResult(true);
-        }
-
         public async Task<bool> AddItemAsync(T item)
         {
             Items.Add(item);
@@ -46,7 +40,7 @@ namespace NaisCompanion.Services
         {
             return await Task.FromResult(Items.FirstOrDefault(s => s.Id == id));
         }
-
+        
         public async Task<IEnumerable<T>> GetItemsAsync(bool forceRefresh = false)
         {
             return await Task.FromResult(Items);

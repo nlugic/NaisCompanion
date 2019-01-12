@@ -9,7 +9,8 @@ namespace NaisCompanion.Models
         public int Id { get; set; }
         public string Username { get; set; }
         public uint Tokens { get; set; }
-        public uint Timeout { get; set; }
+        public int Timeout { get; set; }
+        public List<TouristLocation> Visited { get; set; } = new List<TouristLocation>();
 
         public Tourist() { }
     }

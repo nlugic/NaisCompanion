@@ -19,7 +19,7 @@ namespace NaisCompanion.Views
 
             Item = new TouristLocation
             {
-                Text = "Item name",
+                //Text = "Item name", [OBRISATI]
                 Description = "This is an item description."
             };
 
