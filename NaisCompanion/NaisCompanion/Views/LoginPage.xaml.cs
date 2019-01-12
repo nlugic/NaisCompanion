@@ -39,13 +39,14 @@ namespace NaisCompanion.Views
                 await DisplayAlert("Error", "Username '" + viewModel.UserName + "' is already taken.", "Ok");
             else
             {
-                await viewModel.TouristDataStore.AddItemAsync(new Tourist
+                Tourist registered = new Tourist
                 {
                     Username = viewModel.UserName,
                     Timeout = viewModel.Timeout
-                });
+                };
+                await viewModel.TouristDataStore.AddItemAsync(registered);
 
-                Navigation.InsertPageBefore(new MainPage(), this);
+                Navigation.InsertPageBefore(new MainPage(registered), this);
                 await Navigation.PopAsync().ConfigureAwait(false);
             }
 
@@ -65,7 +66,7 @@ namespace NaisCompanion.Views
                 await DisplayAlert("Error", "Username '" + viewModel.UserName + "' is not found.", "Ok");
             else
             {
-                Navigation.InsertPageBefore(new MainPage(), this);
+                Navigation.InsertPageBefore(new MainPage(current), this);
                 await Navigation.PopAsync().ConfigureAwait(false);
             }
 

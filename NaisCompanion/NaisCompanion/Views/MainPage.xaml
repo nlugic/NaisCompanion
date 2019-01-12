@@ -4,18 +4,10 @@
             xmlns:views="clr-namespace:NaisCompanion.Views"
             x:Class="NaisCompanion.Views.MainPage">
     <TabbedPage.Children>
-        <!--<NavigationPage Title="Browse">
-            <NavigationPage.Icon>
-                <OnPlatform x:TypeArguments="FileImageSource">
-                    <On Platform="iOS" Value="tab_feed.png"/>
-                </OnPlatform>
-            </NavigationPage.Icon>
-            <x:Arguments>
-                <views:ItemsPage />
-            </x:Arguments>
-        </NavigationPage>
+        <!-- dodati mapu i settings stranicu, istraziti dinamicko dodavanje tabova -->
+        <!-- goruci problemi: tab header, dizajn i visina; google mapa, odabir prikaza i fiksiranje lokacije, dodavanje markera -->
         
-        <NavigationPage Title="About">
+        <!--<NavigationPage Title="About">
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
                     <On Platform="iOS" Value="tab_about.png"/>
