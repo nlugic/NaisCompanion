@@ -1,11 +1,13 @@
-﻿using System;
+﻿using NaisCompanion.Models;
+using System;
 using System.Windows.Input;
 
 using Xamarin.Forms;
 
 namespace NaisCompanion.ViewModels
 {
-    public class AboutViewModel : BaseViewModel
+    // ZA SETTINGS
+    public class AboutViewModel : BaseViewModel<Tourist>
     {
         public AboutViewModel()
         {

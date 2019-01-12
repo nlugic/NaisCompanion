@@ -11,13 +11,13 @@ namespace NaisCompanion.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NewItemPage : ContentPage
     {
-        public Item Item { get; set; }
+        public TouristLocation Item { get; set; }
 
         public NewItemPage()
         {
             InitializeComponent();
 
-            Item = new Item
+            Item = new TouristLocation
             {
                 Text = "Item name",
                 Description = "This is an item description."

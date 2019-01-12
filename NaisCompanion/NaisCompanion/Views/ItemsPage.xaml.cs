@@ -16,7 +16,7 @@ namespace NaisCompanion.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ItemsPage : ContentPage
     {
-        ItemsViewModel viewModel;
+        private ItemsViewModel viewModel;
 
         public ItemsPage()
         {
@@ -27,7 +27,7 @@ namespace NaisCompanion.Views
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            var item = args.SelectedItem as Item;
+            TouristLocation item = args.SelectedItem as TouristLocation;
             if (item == null)
                 return;
 

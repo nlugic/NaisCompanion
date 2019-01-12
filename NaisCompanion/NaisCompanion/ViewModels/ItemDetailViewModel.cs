@@ -4,12 +4,13 @@ using NaisCompanion.Models;
 
 namespace NaisCompanion.ViewModels
 {
+    // ZA JEDAN TOURIST/REWARD
     public class ItemDetailViewModel : BaseViewModel
     {
-        public Item Item { get; set; }
-        public ItemDetailViewModel(Item item = null)
+        public TouristLocation Item { get; set; }
+        public ItemDetailViewModel(TouristLocation item = null)
         {
-            Title = item?.Text;
+            Title = item?.Description;
             Item = item;
         }
     }

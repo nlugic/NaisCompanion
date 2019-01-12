@@ -24,7 +24,7 @@ namespace NaisCompanion.Views
         {
             InitializeComponent();
 
-            var item = new Item
+            var item = new TouristLocation
             {
                 Text = "Item 1",
                 Description = "This is an item description."
