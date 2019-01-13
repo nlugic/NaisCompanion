@@ -9,6 +9,7 @@ namespace NaisCompanion.ViewModels
     {
         public RewardLocation Location { get; private set; }
 
+        public string Title { get; private set; }
         public string Tags
         {
             get { return (from s in Location?.Tags select s).FirstOrDefault(); }

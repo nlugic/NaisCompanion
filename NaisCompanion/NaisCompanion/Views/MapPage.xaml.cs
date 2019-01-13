@@ -1,9 +1,7 @@
 ﻿using NaisCompanion.Models;
 using NaisCompanion.ViewModels;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
@@ -65,12 +63,12 @@ namespace NaisCompanion.Views
                 map.Pins.Add(reward);
             }
 
-            return await Task.FromResult<MapPage>(this);
+            return await Task.FromResult(this);
         }
 
         public static Task<MapPage> CraeateAsync(Tourist active)
         {
-            var ret = new MapPage(active);
+            MapPage ret = new MapPage(active);
             return ret.InitializeAsync();
         }
 

@@ -9,9 +9,7 @@
                    IsShowingUser="True"
                    MapType="Street"
                    HorizontalOptions="Fill"
-                   VerticalOptions="FillAndExpand">
-                
-            </m:Map>
+                   VerticalOptions="FillAndExpand" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

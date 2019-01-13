@@ -4,7 +4,7 @@ using System.Text;
 
 namespace NaisCompanion.Models
 {
-    public class Tourist : IBaseModel
+    public class Tourist
     {
         public int Id { get; set; }
         public string Username { get; set; }

@@ -1,43 +1,28 @@
 ﻿using NaisCompanion.Models;
-using NaisCompanion.Services;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
-using Xamarin.Forms;
 
 namespace NaisCompanion.ViewModels
 {
-    public class LoginViewModel : BaseViewModel
+    public class LoginViewModel
     {
-        public TouristMockDataStore TouristDataStore
+        private List<Tourist> touristDataStore = new List<Tourist>
         {
-            get
-            {
-                return DependencyService.Get<TouristMockDataStore>() ?? new TouristMockDataStore(new List<Tourist>
-                {
-                    new Tourist { Id = 1, Username = "user1", Tokens = 0, Timeout = 24 },
-                    new Tourist { Id = 2, Username = "user2", Tokens = 0, Timeout = 24 },
-                    new Tourist { Id = 3, Username = "user3", Tokens = 0, Timeout = 24 },
-                    new Tourist { Id = 4, Username = "user4", Tokens = 0, Timeout = 24 }
-                });
-            }
-        }
-        
-        private string userName = string.Empty;
-        public string UserName
+            new Tourist { Id = 1, Username = "nlugic", Tokens = 0, Timeout = 24 },
+            new Tourist { Id = 2, Username = "malinovic", Tokens = 0, Timeout = 24 },
+            new Tourist { Id = 3, Username = "avucic", Tokens = 0, Timeout = 24 },
+            new Tourist { Id = 4, Username = "nstefanovic", Tokens = 0, Timeout = 24 }
+        };
+
+        public List<Tourist> TouristDataStore
         {
-            get { return userName; }
-            set { SetProperty(ref userName, value); }
+            get { return touristDataStore; }
+            set { touristDataStore = value; }
         }
 
-        private int timeout = 1;
-        public int Timeout
-        {
-            get { return timeout; }
-            set { SetProperty(ref timeout, value); }
-        }
-
+        public string Title { get; private set; }
+        public string UserName { get; set; } = string.Empty;
+        public int Timeout { get; set; } = 1;
         public ICommand BeginTourCommand { get; private set; }
         public ICommand ContinueTourCommand { get; private set; }
 

@@ -1,7 +1,7 @@
 ﻿
 namespace NaisCompanion.Models
 {
-    public class Reward : IBaseModel
+    public class Reward
     {
         public int Id { get; set; }
         public string Name { get; set; }

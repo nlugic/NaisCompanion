@@ -1,11 +1,8 @@
 ﻿using NaisCompanion.Models;
 using NaisCompanion.ViewModels;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -35,7 +32,7 @@ namespace NaisCompanion.Views
                 return await Task.FromResult(false);
             }
 
-            Tourist current = await viewModel.TouristDataStore.GetTouristAsync(viewModel.UserName);
+            Tourist current =  viewModel.TouristDataStore.Where(t => t.Username == viewModel.UserName).FirstOrDefault();
             if (current != null)
                 await DisplayAlert("Error", "Username '" + viewModel.UserName + "' is already taken.", "Ok");
             else
@@ -45,7 +42,7 @@ namespace NaisCompanion.Views
                     Username = viewModel.UserName,
                     Timeout = viewModel.Timeout
                 };
-                await viewModel.TouristDataStore.AddItemAsync(registered);
+                viewModel.TouristDataStore.Add(registered);
 
                 Navigation.InsertPageBefore(await MainPage.CreateAsync(registered), this);
                 await Navigation.PopAsync().ConfigureAwait(false);
@@ -62,7 +59,7 @@ namespace NaisCompanion.Views
                 return await Task.FromResult(false);
             }
 
-            Tourist current = await viewModel.TouristDataStore.GetTouristAsync(viewModel.UserName);
+            Tourist current = viewModel.TouristDataStore.Where(t => t.Username == viewModel.UserName).FirstOrDefault();
             if (current == null)
                 await DisplayAlert("Error", "Username '" + viewModel.UserName + "' is not found.", "Ok");
             else
@@ -72,6 +69,17 @@ namespace NaisCompanion.Views
             }
 
             return await Task.FromResult(true);
+        }
+
+        private void Entry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            viewModel.UserName = e.NewTextValue;
+        }
+
+        private void Stepper_ValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            viewModel.Timeout = (int)Math.Round(e.NewValue);
+            lblTimeout.Text = "Duration of your visit: " + viewModel.Timeout.ToString() + " days";
         }
     }
 }

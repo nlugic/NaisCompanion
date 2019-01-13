@@ -2,7 +2,7 @@
 
 namespace NaisCompanion.Models
 {
-    public class RewardLocation : IBaseModel
+    public class RewardLocation
     {
         public int Id { get; set; }
         public Location Position { get; set; }

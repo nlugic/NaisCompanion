@@ -2,7 +2,7 @@
 
 namespace NaisCompanion.ViewModels
 {
-    public class TouristViewModel : BaseViewModel
+    public class TouristViewModel
     {
         public Tourist CurrentTourist { get; private set; }
 
