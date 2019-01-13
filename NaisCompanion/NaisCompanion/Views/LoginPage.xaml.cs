@@ -20,7 +20,8 @@ namespace NaisCompanion.Views
 		{
 			InitializeComponent();
 
-            BindingContext = viewModel = new LoginViewModel(
+            BindingContext = viewModel = new LoginViewModel
+            (
                 new Command(async () => await BeginTour()),
                 new Command(async () => await ContinueTour())
             );

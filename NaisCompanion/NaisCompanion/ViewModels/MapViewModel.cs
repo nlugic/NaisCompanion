@@ -2,11 +2,8 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
-
 using NaisCompanion.Models;
-using NaisCompanion.Views;
 using NaisCompanion.Services;
 using System.Collections.Generic;
 

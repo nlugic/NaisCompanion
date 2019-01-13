@@ -38,8 +38,8 @@ namespace NaisCompanion.ViewModels
             set { SetProperty(ref timeout, value); }
         }
 
-        public ICommand BeginTourCommand { get; set; }
-        public ICommand ContinueTourCommand { get; set; }
+        public ICommand BeginTourCommand { get; private set; }
+        public ICommand ContinueTourCommand { get; private set; }
 
         public LoginViewModel(ICommand begin, ICommand cont)
         {

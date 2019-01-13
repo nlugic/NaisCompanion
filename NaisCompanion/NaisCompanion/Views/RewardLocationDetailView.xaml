@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:cw="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+             x:Class="NaisCompanion.Views.RewardLocationDetailView">
+    <ContentPage.Content>
+        <StackLayout>
+            <cw:CarouselViewControl Orientation="Horizontal"
+                                    Position="0"
+                                    InterPageSpacing="10"
+                                    ItemsSource="{Binding PhotosUri}"
+                                    HorizontalOptions="Fill"
+                                    VerticalOptions="StartAndExpand">
+                <cw:CarouselViewControl.ItemTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding Path='.'}"
+                               HorizontalOptions="Fill"
+                               VerticalOptions="Fill" />
+                    </DataTemplate>
+                </cw:CarouselViewControl.ItemTemplate>
+            </cw:CarouselViewControl>
+            <StackLayout HorizontalOptions="Fill"
+                         VerticalOptions="EndAndExpand">
+                <Label Text="{Binding Description}"
+                       HorizontalTextAlignment="Center" />
+                <Label Text="{Binding Url, StringFormat='Visit {0}!'}"
+                       FontSize="Small" />
+                <Label Text="{Binding Tags, StringFormat='Tags: {0}.'}"
+                       FontSize="Small" />
+                <!-- lista rewardova -->
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:cw="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+             x:Class="NaisCompanion.Views.TouristLocationDetailView">
+    <ContentPage.Content>
+        <StackLayout>
+            <cw:CarouselViewControl Orientation="Horizontal"
+                                    Position="0"
+                                    InterPageSpacing="10"
+                                    ItemsSource="{Binding Location.PhotosUri}"
+                                    HorizontalOptions="Fill"
+                                    VerticalOptions="StartAndExpand">
+                <cw:CarouselViewControl.ItemTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding Path='.'}"
+                               HorizontalOptions="Fill"
+                               VerticalOptions="Fill" />
+                    </DataTemplate>
+                </cw:CarouselViewControl.ItemTemplate>
+            </cw:CarouselViewControl>
+            <StackLayout HorizontalOptions="Fill"
+                            VerticalOptions="EndAndExpand">
+                <Label Text="{Binding Location.Description}"
+                       HorizontalTextAlignment="Center" />
+                <Label Text="{Binding Location.VisitedPayment, StringFormat='For visiting this place, you will earn {0} tokens.'}"
+                       FontSize="Medium" />
+                <Label Text="{Binding Location.MinVisitedDuration, StringFormat='Your visit needs to be at least {0} minutes long.'}"
+                       FontSize="Medium" />
+                <Label Text="{Binding Location.PostPayment, StringFormat='For posting your impression about this place, you will earn {0} tokens.'}"
+                       FontSize="Medium" />
+                <Label Text="{Binding Location.PhotoPayment, StringFormat='For posting a photo of this place, you will earn {0} tokens.'}"
+                       FontSize="Medium" />
+                <Label Text="{Binding Tags, StringFormat='Tags: {0}.'}"
+                       FontSize="Small" />
+            <!-- lista postova -->
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

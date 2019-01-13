@@ -17,6 +17,5 @@
                 <views:AboutPage />
             </x:Arguments>
         </NavigationPage>-->
-        
     </TabbedPage.Children>
 </TabbedPage>

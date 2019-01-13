@@ -10,7 +10,7 @@
                    MapType="Street"
                    HorizontalOptions="Fill"
                    VerticalOptions="FillAndExpand">
-                <!-- ovde foreach markeri -->
+                
             </m:Map>
         </StackLayout>
     </ContentPage.Content>

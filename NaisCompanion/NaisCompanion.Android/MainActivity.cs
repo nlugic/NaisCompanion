@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using CarouselView.FormsPlugin.Android;
 
 namespace NaisCompanion.Droid
 {
@@ -20,6 +21,7 @@ namespace NaisCompanion.Droid
             base.OnCreate(savedInstanceState);
             Xamarin.Forms.Forms.Init(this, savedInstanceState);
             Xamarin.FormsMaps.Init(this, savedInstanceState);
+            CarouselViewRenderer.Init();
             LoadApplication(new App());
         }
     }
