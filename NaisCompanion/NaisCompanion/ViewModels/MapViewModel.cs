@@ -13,11 +13,8 @@ using System.Collections.Generic;
 namespace NaisCompanion.ViewModels
 {
     // ZA MAPU
-    // BVM mora da ima trenutno ulogovanog tourista
-    // opciono bez BVM-a, za svaku stranicu ceo VM
-    // MVM ima listu reward i tourist lokacija, kao i trenutnog tourista
     // RLDVM, TLDVM i TDVM imaju po jednu instancu odgovarajuce klase
-    public class MapViewModel : BaseViewModel
+    public class MapViewModel : TouristViewModel
     {
         public IDataStore<TouristLocation> TouristLocationsDataStore
         {
@@ -27,58 +24,86 @@ namespace NaisCompanion.ViewModels
                 {
                     new TouristLocation { Id = 1, Latitude = 50.0, Longitude = 45.0, Radius = 0.00001,
                         Name = "location1", Description = "description1", Tags = new List<string> { "tag1", "tag2", "tag3" },
-                        Photos = new List<Image> { new Image { Source = "image1.jpg" }, new Image { Source = "image2.jpg" }, new Image { Source = "image3.jpg" } },
+                        PhotosUri = new List<string> { "image1.jpg", "image2.jpg", "image3.jpg" },
                         VisitedPayment = 5U, MinVisitDuration = 10U, PostPayment = 5U, PhotoPayment = 5U },
                     new TouristLocation { Id = 2, Latitude = 50.0, Longitude = 45.0, Radius = 0.00001,
                         Name = "location1", Description = "description1", Tags = new List<string> { "tag1", "tag2", "tag3" },
-                        Photos = new List<Image> { new Image { Source = "image1.jpg" }, new Image { Source = "image2.jpg" }, new Image { Source = "image3.jpg" } },
+                        PhotosUri = new List<string> { "image1.jpg", "image2.jpg", "image3.jpg" },
                         VisitedPayment = 5U, MinVisitDuration = 10U, PostPayment = 5U, PhotoPayment = 5U },
                     new TouristLocation { Id = 3, Latitude = 50.0, Longitude = 45.0, Radius = 0.00001,
                         Name = "location1", Description = "description1", Tags = new List<string> { "tag1", "tag2", "tag3" },
-                        Photos = new List<Image> { new Image { Source = "image1.jpg" }, new Image { Source = "image2.jpg" }, new Image { Source = "image3.jpg" } },
+                        PhotosUri = new List<string> { "image1.jpg", "image2.jpg", "image3.jpg" },
                         VisitedPayment = 5U, MinVisitDuration = 10U, PostPayment = 5U, PhotoPayment = 5U },
                     new TouristLocation { Id = 4, Latitude = 50.0, Longitude = 45.0, Radius = 0.00001,
                         Name = "location1", Description = "description1", Tags = new List<string> { "tag1", "tag2", "tag3" },
-                        Photos = new List<Image> { new Image { Source = "image1.jpg" }, new Image { Source = "image2.jpg" }, new Image { Source = "image3.jpg" } },
+                        PhotosUri = new List<string> { "image1.jpg", "image2.jpg", "image3.jpg" },
                         VisitedPayment = 5U, MinVisitDuration = 10U, PostPayment = 5U, PhotoPayment = 5U },
                     new TouristLocation { Id = 5, Latitude = 50.0, Longitude = 45.0, Radius = 0.00001,
                         Name = "location1", Description = "description1", Tags = new List<string> { "tag1", "tag2", "tag3" },
-                        Photos = new List<Image> { new Image { Source = "image1.jpg" }, new Image { Source = "image2.jpg" }, new Image { Source = "image3.jpg" } },
+                        PhotosUri = new List<string> { "image1.jpg", "image2.jpg", "image3.jpg" },
                         VisitedPayment = 5U, MinVisitDuration = 10U, PostPayment = 5U, PhotoPayment = 5U },
                     new TouristLocation { Id = 6, Latitude = 50.0, Longitude = 45.0, Radius = 0.00001,
                         Name = "location1", Description = "description1", Tags = new List<string> { "tag1", "tag2", "tag3" },
-                        Photos = new List<Image> { new Image { Source = "image1.jpg" }, new Image { Source = "image2.jpg" }, new Image { Source = "image3.jpg" } },
+                        PhotosUri = new List<string> { "image1.jpg", "image2.jpg", "image3.jpg" },
                         VisitedPayment = 5U, MinVisitDuration = 10U, PostPayment = 5U, PhotoPayment = 5U },
                     new TouristLocation { Id = 7, Latitude = 50.0, Longitude = 45.0, Radius = 0.00001,
                         Name = "location1", Description = "description1", Tags = new List<string> { "tag1", "tag2", "tag3" },
-                        Photos = new List<Image> { new Image { Source = "image1.jpg" }, new Image { Source = "image2.jpg" }, new Image { Source = "image3.jpg" } },
+                        PhotosUri = new List<string> { "image1.jpg", "image2.jpg", "image3.jpg" },
                         VisitedPayment = 5U, MinVisitDuration = 10U, PostPayment = 5U, PhotoPayment = 5U },
                     new TouristLocation { Id = 8, Latitude = 50.0, Longitude = 45.0, Radius = 0.00001,
                         Name = "location1", Description = "description1", Tags = new List<string> { "tag1", "tag2", "tag3" },
-                        Photos = new List<Image> { new Image { Source = "image1.jpg" }, new Image { Source = "image2.jpg" }, new Image { Source = "image3.jpg" } },
+                        PhotosUri = new List<string> { "image1.jpg", "image2.jpg", "image3.jpg" },
                         VisitedPayment = 5U, MinVisitDuration = 10U, PostPayment = 5U, PhotoPayment = 5U }
                 });
             }
         }
 
-        public ObservableCollection<TouristLocation> Items { get; set; }
-        public Command LoadItemsCommand { get; set; }
-
-        public MapViewModel()
+        public IDataStore<RewardLocation> RewardLocationsDataStore
         {
-            Title = "Map";
-            Items = new ObservableCollection<TouristLocation>();
-            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
-
-            MessagingCenter.Subscribe<NewItemPage, TouristLocation>(this, "AddItem", async (obj, item) =>
+            get
             {
-                var newItem = item as TouristLocation;
-                Items.Add(newItem);
-                await DataStore.AddItemAsync(newItem);
-            });
+                return DependencyService.Get<IDataStore<RewardLocation>>() ?? new MockDataStore<RewardLocation>(new List<RewardLocation>
+                {
+                    new RewardLocation { Id = 1, Latitude = 50.0, Longitude = 45.0, Radius = 0.00001,
+                        Name = "location1", Description = "description1", Tags = new List<string> { "tag1", "tag2", "tag3" },
+                        Url = "www.example.com", PhotosUri = new List<string> { "image1.jpg", "image2.jpg", "image3.jpg" },
+                        Rewards = new List<Reward> { new Reward { Id = 1, Name = "Reward 1", Description = "Description 1", Price = 40, ThumbnailUri = "imager.jpg" } } },
+                    new RewardLocation { Id = 1, Latitude = 50.0, Longitude = 45.0, Radius = 0.00001,
+                        Name = "location1", Description = "description1", Tags = new List<string> { "tag1", "tag2", "tag3" },
+                        Url = "www.example.com", PhotosUri = new List<string> { "image1.jpg", "image2.jpg", "image3.jpg" },
+                        Rewards = new List<Reward> { new Reward { Id = 1, Name = "Reward 1", Description = "Description 1", Price = 40, ThumbnailUri = "imager.jpg" } } },
+                    new RewardLocation { Id = 1, Latitude = 50.0, Longitude = 45.0, Radius = 0.00001,
+                        Name = "location1", Description = "description1", Tags = new List<string> { "tag1", "tag2", "tag3" },
+                        Url = "www.example.com", PhotosUri = new List<string> { "image1.jpg", "image2.jpg", "image3.jpg" },
+                        Rewards = new List<Reward> { new Reward { Id = 1, Name = "Reward 1", Description = "Description 1", Price = 40, ThumbnailUri = "imager.jpg" } } },
+                    new RewardLocation { Id = 1, Latitude = 50.0, Longitude = 45.0, Radius = 0.00001,
+                        Name = "location1", Description = "description1", Tags = new List<string> { "tag1", "tag2", "tag3" },
+                        Url = "www.example.com", PhotosUri = new List<string> { "image1.jpg", "image2.jpg", "image3.jpg" },
+                        Rewards = new List<Reward> { new Reward { Id = 1, Name = "Reward 1", Description = "Description 1", Price = 40, ThumbnailUri = "imager.jpg" } } },
+                    new RewardLocation { Id = 1, Latitude = 50.0, Longitude = 45.0, Radius = 0.00001,
+                        Name = "location1", Description = "description1", Tags = new List<string> { "tag1", "tag2", "tag3" },
+                        Url = "www.example.com", PhotosUri = new List<string> { "image1.jpg", "image2.jpg", "image3.jpg" },
+                        Rewards = new List<Reward> { new Reward { Id = 1, Name = "Reward 1", Description = "Description 1", Price = 40, ThumbnailUri = "imager.jpg" } } }
+                });
+            }
         }
 
-        async Task ExecuteLoadItemsCommand()
+        public ObservableCollection<TouristLocation> TouristLocations { get; set; }
+        public Command LoadTouristLocationsCommand { get; set; }
+        public ObservableCollection<RewardLocation> RewardLocations { get; set; }
+        public Command LoadRewardLocationsCommand { get; set; }
+
+        public MapViewModel(Tourist currentTourist)
+            :base(currentTourist)
+        {
+            Title = "Tour of Niš";
+            TouristLocations = new ObservableCollection<TouristLocation>();
+            LoadTouristLocationsCommand = new Command(async () => await ExecuteLoadTouristLocationsCommand());
+            RewardLocations = new ObservableCollection<RewardLocation>();
+            LoadRewardLocationsCommand = new Command(async () => await ExecuteLoadRewardLocationsCommand());
+        }
+
+        private async Task ExecuteLoadTouristLocationsCommand()
         {
             if (IsBusy)
                 return;
@@ -87,21 +112,31 @@ namespace NaisCompanion.ViewModels
 
             try
             {
-                Items.Clear();
-                var items = await DataStore.GetItemsAsync(true);
-                foreach (var item in items)
-                {
-                    Items.Add(item);
-                }
+                TouristLocations.Clear();
+                IEnumerable<TouristLocation> items = await TouristLocationsDataStore.GetItemsAsync(true);
+                foreach (TouristLocation item in items)
+                    TouristLocations.Add(item);
             }
-            catch (Exception ex)
+            catch (Exception ex) { Debug.WriteLine(ex); }
+            finally { IsBusy = false; }
+        }
+
+        private async Task ExecuteLoadRewardLocationsCommand()
+        {
+            if (IsBusy)
+                return;
+
+            IsBusy = true;
+
+            try
             {
-                Debug.WriteLine(ex);
+                RewardLocations.Clear();
+                IEnumerable<RewardLocation> items = await RewardLocationsDataStore.GetItemsAsync(true);
+                foreach (RewardLocation item in items)
+                    RewardLocations.Add(item);
             }
-            finally
-            {
-                IsBusy = false;
-            }
+            catch (Exception ex) { Debug.WriteLine(ex); }
+            finally { IsBusy = false; }
         }
     }
 }

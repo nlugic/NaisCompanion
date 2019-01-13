@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Xamarin.Forms;
 
 namespace NaisCompanion.Models
 {
@@ -12,7 +11,7 @@ namespace NaisCompanion.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public List<string> Tags { get; set; }
-        public List<Image> Photos { get; set; } // koji image?
+        public List<string> PhotosUri { get; set; }
         public uint VisitedPayment { get; set; }
         public uint MinVisitDuration { get; set; }
         public uint PostPayment { get; set; }

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:m="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             x:Class="NaisCompanion.Views.MapPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <m:Map x:Name="map"
+                   IsShowingUser="True"
+                   MapType="Street"
+                   HorizontalOptions="Fill"
+                   VerticalOptions="FillAndExpand">
+                <!-- ovde foreach markeri -->
+            </m:Map>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Xamarin.Forms;
-
+﻿
 namespace NaisCompanion.Models
 {
     public class Reward : IBaseModel
@@ -11,7 +7,7 @@ namespace NaisCompanion.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public uint Price { get; set; }
-        public Image Thumbnail { get; set; }
+        public string ThumbnailUri { get; set; }
 
         public Reward() { }
     }
