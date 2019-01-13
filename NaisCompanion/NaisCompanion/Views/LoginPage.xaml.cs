@@ -47,7 +47,7 @@ namespace NaisCompanion.Views
                 };
                 await viewModel.TouristDataStore.AddItemAsync(registered);
 
-                Navigation.InsertPageBefore(new MainPage(registered), this);
+                Navigation.InsertPageBefore(await MainPage.CreateAsync(registered), this);
                 await Navigation.PopAsync().ConfigureAwait(false);
             }
 
@@ -67,7 +67,7 @@ namespace NaisCompanion.Views
                 await DisplayAlert("Error", "Username '" + viewModel.UserName + "' is not found.", "Ok");
             else
             {
-                Navigation.InsertPageBefore(new MainPage(current), this);
+                Navigation.InsertPageBefore(await MainPage.CreateAsync(current), this);
                 await Navigation.PopAsync().ConfigureAwait(false);
             }
 

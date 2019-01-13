@@ -7,6 +7,8 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using CarouselView.FormsPlugin.Android;
+using Plugin.Geolocator;
+using Plugin.CurrentActivity;
 
 namespace NaisCompanion.Droid
 {
@@ -22,6 +24,7 @@ namespace NaisCompanion.Droid
             Xamarin.Forms.Forms.Init(this, savedInstanceState);
             Xamarin.FormsMaps.Init(this, savedInstanceState);
             CarouselViewRenderer.Init();
+            CrossCurrentActivity.Current.Init(this, savedInstanceState);
             LoadApplication(new App());
         }
     }

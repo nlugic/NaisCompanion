@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using Xamarin.Forms.Xaml;
+using Plugin.Geolocator;
 
 namespace NaisCompanion.Views
 {
@@ -15,12 +16,26 @@ namespace NaisCompanion.Views
 	public partial class MapPage : ContentPage
     {
         private MapViewModel viewModel;
+        private Plugin.Geolocator.Abstractions.Position CurrentPosition { get; set; }
+
+        public MapPage()
+        {
+            InitializeComponent();
+        }
 
         public MapPage(Tourist active)
 		{
 			InitializeComponent();
 
             BindingContext = viewModel = new MapViewModel(active);
+		}
+
+        private async Task<MapPage> InitializeAsync()
+        {
+            CurrentPosition = await CrossGeolocator.Current.GetPositionAsync();
+
+            map.MoveToRegion(new MapSpan(new Position(CurrentPosition.Latitude, CurrentPosition.Longitude), 0.02, 0.02));
+            CrossGeolocator.Current.PositionChanged += Current_PositionChanged;
 
             foreach (TouristLocation tl in viewModel.TouristLocations)
             {
@@ -49,8 +64,21 @@ namespace NaisCompanion.Views
                 reward.Clicked += Reward_Clicked;
                 map.Pins.Add(reward);
             }
-		}
-        
+
+            return await Task.FromResult<MapPage>(this);
+        }
+
+        public static Task<MapPage> CraeateAsync(Tourist active)
+        {
+            var ret = new MapPage(active);
+            return ret.InitializeAsync();
+        }
+
+        private void Current_PositionChanged(object sender, Plugin.Geolocator.Abstractions.PositionEventArgs e)
+        {
+            // proverimo koji su in range
+        }
+
         private void Location_Clicked(object sender, EventArgs e)
         {
             Pin clicked = sender as Pin;
