@@ -8,14 +8,13 @@ using Xamarin.Forms.Maps;
 using Xamarin.Forms.Xaml;
 using Plugin.Geolocator;
 using System.Collections.Generic;
+using Plugin.Geolocator.Abstractions;
 
 namespace NaisCompanion.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class MapPage : ContentPage
     {
-        const int EARTH_RADIUS_KM = 6371;
-
         private MapViewModel viewModel;
         private Plugin.Geolocator.Abstractions.Position CurrentPosition { get; set; }
 
@@ -34,9 +33,8 @@ namespace NaisCompanion.Views
         private async Task<MapPage> InitializeAsync()
         {
             CurrentPosition = await CrossGeolocator.Current.GetPositionAsync();
-
-            map.MoveToRegion(new MapSpan(new Position(CurrentPosition.Latitude, CurrentPosition.Longitude), 0.02, 0.02));
-            CrossGeolocator.Current.PositionChanged += Current_PositionChanged;
+          
+            map.MoveToRegion(new MapSpan(new Xamarin.Forms.Maps.Position(CurrentPosition.Latitude, CurrentPosition.Longitude), 0.02, 0.02));
 
             foreach (TouristLocation tl in viewModel.TouristLocations)
             {
@@ -45,19 +43,18 @@ namespace NaisCompanion.Views
                     Address = tl.Name,
                     Label = "You can earn up to " + (tl.VisitedPayment + tl.PostPayment
                         + tl.PhotoPayment).ToString() + " tokens here! Tap to visit!",
-                    Position = new Position(tl.Position.Latitude, tl.Position.Longitude),
+                    Position = new Xamarin.Forms.Maps.Position(tl.Position.Latitude, tl.Position.Longitude),
                     Type = PinType.Place
                 };
                 CustomCircle circle = new CustomCircle
                 {
-                    Position = new Position(tl.Position.Latitude, tl.Position.Longitude),
+                    Position = new Xamarin.Forms.Maps.Position(tl.Position.Latitude, tl.Position.Longitude),
                     Radius = tl.Position.Radius
                 };
                 location.Clicked += Location_Clicked;
                 map.Pins.Add(location);
                 map.Circles.Add(circle);
             }
-
             foreach (RewardLocation rl in viewModel.RewardLocations)
             {
                 Pin reward = new RewardPin
@@ -65,12 +62,17 @@ namespace NaisCompanion.Views
                     Address = rl.Name,
                     Label = rl.Rewards.Count().ToString() + " rewards for as low as "
                         + (rl.Rewards.Min(r => r.Price)).ToString() + " tokens! Tap to visit!",
-                    Position = new Position(rl.Position.Latitude, rl.Position.Longitude),
+                    Position = new Xamarin.Forms.Maps.Position(rl.Position.Latitude, rl.Position.Longitude),
                     Type = PinType.Place
                 };
                 reward.Clicked += Reward_Clicked;
                 map.Pins.Add(reward);
             }
+
+            if (CrossGeolocator.Current.IsListening)
+                return await Task.FromResult(this);
+            bool x = await CrossGeolocator.Current.StartListeningAsync(new TimeSpan(0, 0, 15), 0, true, null);
+            CrossGeolocator.Current.PositionChanged += PositionChanged;
 
             return await Task.FromResult(this);
         }
@@ -81,15 +83,22 @@ namespace NaisCompanion.Views
             return ret.InitializeAsync();
         }
 
-        private async void Current_PositionChanged(object sender, Plugin.Geolocator.Abstractions.PositionEventArgs e)
+        #region EventListeners
+        private async void PositionChanged(object sender, PositionEventArgs e)
         {
-            foreach(TouristLocation touristLocation in viewModel.TouristLocations)
+            foreach (TouristLocation touristLocation in viewModel.TouristLocations)
             {
                 var m = e.Position;
 
-                if(IsInRegion(e.Position, touristLocation.Position))
-                //if(DistanceBetweenPoints(e.Position, touristLocation.Position))                        
+                if (Distance(m.Latitude, m.Longitude, touristLocation.Position.Latitude, touristLocation.Position.Longitude) < (touristLocation.Position.Radius*0.001))
                 {
+                    if (!CrossGeolocator.Current.IsListening)
+                        return;
+
+                    await CrossGeolocator.Current.StopListeningAsync();
+
+                    CrossGeolocator.Current.PositionChanged -= PositionChanged;
+
                     string question = "Would you like to enter  " + touristLocation.Name + "?";
                     string action = await DisplayActionSheet(question, "Cancel", null, "Enter");
 
@@ -114,7 +123,7 @@ namespace NaisCompanion.Views
                 && tl.Position.Longitude == clicked.Position.Longitude).FirstOrDefault())
             );
         }
-        
+
         private void Reward_Clicked(object sender, EventArgs e)
         {
             Pin clicked = sender as Pin;
@@ -124,38 +133,58 @@ namespace NaisCompanion.Views
                 && rl.Position.Longitude == clicked.Position.Longitude).FirstOrDefault())
             );
         }
+        #endregion
 
-        private bool IsInRegion(Plugin.Geolocator.Abstractions.Position current, Location goalPosition)
+        protected override async void OnAppearing()
         {
-            if (current.Latitude >= goalPosition.Latitude - goalPosition.Radius && current.Latitude <= goalPosition.Latitude + goalPosition.Radius
-                && current.Longitude >= goalPosition.Longitude - goalPosition.Radius && current.Longitude <= goalPosition.Longitude + goalPosition.Radius)
-                return true;
+            base.OnAppearing();
+
+            if (CrossGeolocator.Current.IsListening)
+                return;
+
+            bool x = await CrossGeolocator.Current.StartListeningAsync(new TimeSpan(0, 0, 15), 0, true, null);
+            CrossGeolocator.Current.PositionChanged += PositionChanged;
+        }
+
+        private double Distance(double lat1, double lon1, double lat2, double lon2, char unit='K')
+        {
+            if ((lat1 == lat2) && (lon1 == lon2))
+            {
+                return 0;
+            }
             else
-                return false;
+            {
+                double theta = lon1 - lon2;
+                double dist = Math.Sin(deg2rad(lat1)) * Math.Sin(deg2rad(lat2)) + Math.Cos(deg2rad(lat1)) * Math.Cos(deg2rad(lat2)) * Math.Cos(deg2rad(theta));
+                dist = Math.Acos(dist);
+                dist = rad2deg(dist);
+                dist = dist * 60 * 1.1515;
+                if (unit == 'K')
+                {
+                    dist = dist * 1.609344;
+                }
+                else if (unit == 'N')
+                {
+                    dist = dist * 0.8684;
+                }
+                return (dist);
+            }
         }
 
-        private Distance DistanceBetweenPoints(Position p1, Position p2)
+        //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+        //::  This function converts decimal degrees to radians             :::
+        //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+        private double deg2rad(double deg)
         {
-            double latitude1 = DegreesToRadians(p1.Latitude);
-            double latitude2 = DegreesToRadians(p2.Latitude);
-            double longitude1 = DegreesToRadians(p1.Longitude);
-            double longitude2 = DegreesToRadians(p2.Longitude);
-
-            double distance = Math.Sin((latitude2 - latitude1) / 2.0);
-            distance *= distance;
-
-            double intermediate = Math.Sin((longitude2 - longitude1) / 2.0);
-            intermediate *= intermediate;
-
-            distance = distance + Math.Cos(latitude1) * Math.Cos(latitude2) * intermediate;
-            distance = 2 * EARTH_RADIUS_KM * Math.Atan2(Math.Sqrt(distance), Math.Sqrt(1 - distance));
-
-            return Distance.FromKilometers(distance);
+            return (deg * Math.PI / 180.0);
         }
 
-        private double DegreesToRadians(double degrees)
+        //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+        //::  This function converts radians to decimal degrees             :::
+        //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+        private double rad2deg(double rad)
         {
-            return degrees * Math.PI / 180.0;
+            return (rad / Math.PI * 180.0);
         }
     }
 }

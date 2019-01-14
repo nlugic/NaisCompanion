@@ -135,7 +135,7 @@ namespace NaisCompanion.ViewModels
                                                 },
                 VisitedPayment = 5U, MinVisitDuration = 5U, PostPayment = 5U, PhotoPayment = 5U },
             new TouristLocation { Id = 14,
-                Position = new Location {Id = 14, Latitude = 43.3196633, Longitude = 21.8995759, Radius = 50.0 },
+                Position = new Location {Id = 14, Latitude = 43.3196633, Longitude = 21.8995759, Radius = 1000.0 },
                 Name = "The National Theater", Description = "Nis was one of the first cities to become part of the history of the Serbian theatre. In 1883, the first act was staged in the city to celebrate the wedding anniversary of King Milan and Queen Natalija Obrenovic. The first theatrical group, “Sindjelic”, was founded on 11 March 1887. In the last 111 years, many important names of the Serbian and Yugoslav theatre have appeared on this stage. Since the foundation, over 10,000 plays have been staged, seen by more than 6 million people, in Nis theatre but also in guest appearances in the country and abroad. Nis National Theatre cherishes the national repertoire, but also presents international classic drama and contemporary plays.", Tags = new List<string> { "Culture" },
                 PhotosUri = new List<string> {
                                                 "http://visitnis.com/wp-content/uploads/2018/01/narodno-pozoriste-nis-the-national-theater-nis-1170x521.jpg",
