@@ -7,6 +7,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using Xamarin.Forms.Xaml;
 using Plugin.Geolocator;
+using System.Collections.Generic;
 
 namespace NaisCompanion.Views
 {
@@ -37,7 +38,7 @@ namespace NaisCompanion.Views
 
             foreach (TouristLocation tl in viewModel.TouristLocations)
             {
-                Pin location = new Pin
+                Pin location = new CustomPin
                 {
                     Address = tl.Name,
                     Label = "You can earn up to " + (tl.VisitedPayment + tl.PostPayment
@@ -51,17 +52,39 @@ namespace NaisCompanion.Views
 
             foreach (RewardLocation rl in viewModel.RewardLocations)
             {
-                Pin reward = new Pin
+                Pin reward = new CustomPin
                 {
                     Address = rl.Name,
                     Label = rl.Rewards.Count().ToString() + " rewards for as low as "
                         + (rl.Rewards.Min(r => r.Price)).ToString() + " tokens! Tap to visit!",
                     Position = new Position(rl.Position.Latitude, rl.Position.Longitude),
-                    Type = PinType.SavedPin
+                    Type = PinType.Place
                 };
                 reward.Clicked += Reward_Clicked;
                 map.Pins.Add(reward);
             }
+
+            //var customMap = new CustomMap
+            //{
+            //    MapType = MapType.Street,
+            //};
+
+            //var pin = new CustomPin
+            //{
+            //    Type = PinType.Place,
+            //    Position = new Position(37.79752, -122.40183),
+            //    Label = "Xamarin San Francisco Office",
+            //    Address = "394 Pacific Ave, San Francisco CA",
+            //    Id = "Xamarin",
+            //    Url = "http://xamarin.com/about/"
+            //};
+
+            //customMap.CustomPins = new List<CustomPin> { pin };
+            //customMap.Pins.Add(pin);
+            //customMap.MoveToRegion(MapSpan.FromCenterAndRadius(
+            //  new Position(37.79752, -122.40183), Distance.FromMiles(1.0)));
+
+            //Content = customMap;
 
             return await Task.FromResult(this);
         }
@@ -72,9 +95,25 @@ namespace NaisCompanion.Views
             return ret.InitializeAsync();
         }
 
-        private void Current_PositionChanged(object sender, Plugin.Geolocator.Abstractions.PositionEventArgs e)
+        private async void Current_PositionChanged(object sender, Plugin.Geolocator.Abstractions.PositionEventArgs e)
         {
-            // proverimo koji su in range
+            foreach(TouristLocation touristLocation in viewModel.TouristLocations)
+            {
+                var m = e.Position;
+                if(IsInRegion(e.Position, touristLocation.Position))
+                {
+                    string question = "Would you like to enter  " + touristLocation.Name + "?";
+                    string action = await DisplayActionSheet(question, "Cancel", null, "Enter");
+
+                    await Navigation.PushAsync(new TouristLocationDetailView(viewModel.CurrentTourist, viewModel.TouristLocations.Where
+                    (
+                        tl => tl.Position.Latitude == touristLocation.Position.Latitude
+                        && tl.Position.Longitude == touristLocation.Position.Longitude).FirstOrDefault())
+                    ).ConfigureAwait(true);
+                }
+            }
+
+            return;
         }
 
         private void Location_Clicked(object sender, EventArgs e)
@@ -96,6 +135,15 @@ namespace NaisCompanion.Views
                 rl => rl.Position.Latitude == clicked.Position.Latitude
                 && rl.Position.Longitude == clicked.Position.Longitude).FirstOrDefault())
             );
+        }
+
+        private bool IsInRegion(Plugin.Geolocator.Abstractions.Position current, Location goalPosition)
+        {
+            if (current.Latitude >= goalPosition.Latitude - goalPosition.Radius && current.Latitude <= goalPosition.Latitude + goalPosition.Radius
+                && current.Longitude >= goalPosition.Longitude - goalPosition.Radius && current.Longitude <= goalPosition.Longitude + goalPosition.Radius)
+                return true;
+            else
+                return false;
         }
     }
 }
