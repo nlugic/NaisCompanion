@@ -12,8 +12,22 @@ namespace NaisCompanion.ViewModels
         public string Title { get; private set; }
         public string Tags
         {
-            get { return (from s in Location?.Tags select s).FirstOrDefault(); }
+            get
+            {
+                string res = string.Empty;
+
+                for (short i = 0; i < Location.Tags.Count; ++i)
+                {
+                    res += Location.Tags[i];
+                    if (i != Location.Tags.Count - 1)
+                        res += ", ";
+                }
+
+                return res;
+            }
         }
+
+
 
         public TouristLocationViewModel(Tourist current, TouristLocation location)
             :base(current)

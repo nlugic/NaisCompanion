@@ -14,6 +14,8 @@ namespace NaisCompanion.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class MapPage : ContentPage
     {
+        const int EARTH_RADIUS_KM = 6371;
+
         private MapViewModel viewModel;
         private Plugin.Geolocator.Abstractions.Position CurrentPosition { get; set; }
 
@@ -46,13 +48,19 @@ namespace NaisCompanion.Views
                     Position = new Position(tl.Position.Latitude, tl.Position.Longitude),
                     Type = PinType.Place
                 };
+                CustomCircle circle = new CustomCircle
+                {
+                    Position = new Position(tl.Position.Latitude, tl.Position.Longitude),
+                    Radius = tl.Position.Radius
+                };
                 location.Clicked += Location_Clicked;
                 map.Pins.Add(location);
+                map.Circles.Add(circle);
             }
 
             foreach (RewardLocation rl in viewModel.RewardLocations)
             {
-                Pin reward = new CustomPin
+                Pin reward = new RewardPin
                 {
                     Address = rl.Name,
                     Label = rl.Rewards.Count().ToString() + " rewards for as low as "
@@ -63,28 +71,6 @@ namespace NaisCompanion.Views
                 reward.Clicked += Reward_Clicked;
                 map.Pins.Add(reward);
             }
-
-            //var customMap = new CustomMap
-            //{
-            //    MapType = MapType.Street,
-            //};
-
-            //var pin = new CustomPin
-            //{
-            //    Type = PinType.Place,
-            //    Position = new Position(37.79752, -122.40183),
-            //    Label = "Xamarin San Francisco Office",
-            //    Address = "394 Pacific Ave, San Francisco CA",
-            //    Id = "Xamarin",
-            //    Url = "http://xamarin.com/about/"
-            //};
-
-            //customMap.CustomPins = new List<CustomPin> { pin };
-            //customMap.Pins.Add(pin);
-            //customMap.MoveToRegion(MapSpan.FromCenterAndRadius(
-            //  new Position(37.79752, -122.40183), Distance.FromMiles(1.0)));
-
-            //Content = customMap;
 
             return await Task.FromResult(this);
         }
@@ -100,7 +86,9 @@ namespace NaisCompanion.Views
             foreach(TouristLocation touristLocation in viewModel.TouristLocations)
             {
                 var m = e.Position;
+
                 if(IsInRegion(e.Position, touristLocation.Position))
+                //if(DistanceBetweenPoints(e.Position, touristLocation.Position))                        
                 {
                     string question = "Would you like to enter  " + touristLocation.Name + "?";
                     string action = await DisplayActionSheet(question, "Cancel", null, "Enter");
@@ -144,6 +132,30 @@ namespace NaisCompanion.Views
                 return true;
             else
                 return false;
+        }
+
+        private Distance DistanceBetweenPoints(Position p1, Position p2)
+        {
+            double latitude1 = DegreesToRadians(p1.Latitude);
+            double latitude2 = DegreesToRadians(p2.Latitude);
+            double longitude1 = DegreesToRadians(p1.Longitude);
+            double longitude2 = DegreesToRadians(p2.Longitude);
+
+            double distance = Math.Sin((latitude2 - latitude1) / 2.0);
+            distance *= distance;
+
+            double intermediate = Math.Sin((longitude2 - longitude1) / 2.0);
+            intermediate *= intermediate;
+
+            distance = distance + Math.Cos(latitude1) * Math.Cos(latitude2) * intermediate;
+            distance = 2 * EARTH_RADIUS_KM * Math.Atan2(Math.Sqrt(distance), Math.Sqrt(1 - distance));
+
+            return Distance.FromKilometers(distance);
+        }
+
+        private double DegreesToRadians(double degrees)
+        {
+            return degrees * Math.PI / 180.0;
         }
     }
 }

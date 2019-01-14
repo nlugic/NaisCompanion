@@ -15,7 +15,7 @@ namespace NaisCompanion.ViewModels
         private readonly List<TouristLocation> touristLocationsDataStore = new List<TouristLocation>
         {
             new TouristLocation { Id = 1,
-                Position = new Location{Id = 1, Latitude = 43.319167, Longitude = 21.896111, Radius = 0.00010 },
+                Position = new Location{Id = 1, Latitude = 43.319167, Longitude = 21.896111, Radius = 100.0 },
                 Name = "Red Cross Nazi Concentration Camp", Description = "One of the best-preserved Nazi camps in Europe, the deceptively named Red Cross (named after the adjacent train station) held about 30,000 Serbs, Roma, Jews and Partisans during the German occupation of Serbia (1941–45). Harrowing displays tell their stories, and those of the prisoners who attempted to flee in the biggest-ever breakout from a concentration camp. This was a transit camp so few were killed on the premises – they were taken to Bubanj, or on to Auschwitz, Dachau etc.", Tags = new List<string> { "Historic", "Monument" },
                 PhotosUri = new List<string> {
                                                 "https://media-cdn.tripadvisor.com/media/photo-s/02/2b/e9/d6/view-over-compound-from.jpg",
@@ -25,7 +25,7 @@ namespace NaisCompanion.ViewModels
                                                 },
                 VisitedPayment = 30U, MinVisitDuration = 30U, PostPayment = 5U, PhotoPayment = 5U },
             new TouristLocation { Id = 2,
-                Position = new Location{Id = 2, Latitude = 43.3122, Longitude = 21.9238, Radius = 0.00010 },
+                Position = new Location{Id = 2, Latitude = 43.3122, Longitude = 21.9238, Radius = 50.0 },
                 Name = "Skull Tower", Description = "The Skull Tower (Ćele Kula) is a monument unique in the world, visited by more than 30.000 people each year. It is the tower made of human skulls, built after the battle for liberation of Nis in 1809. This horrific monument was built as a warning to anyone rising against the Ottoman Empire. Originaly there were 952 skulls built into the tower , today there are 59 skulls remain and they still illustrate all the horror of the original tower.", Tags = new List<string> { "Historic", "Monument" },
                 PhotosUri = new List<string> {
                                                 "https://st3.depositphotos.com/3933163/18204/i/1600/depositphotos_182048426-stock-photo-building-with-skull-tower-in.jpg",
@@ -35,7 +35,7 @@ namespace NaisCompanion.ViewModels
                                                 },
                 VisitedPayment = 15U, MinVisitDuration = 15U, PostPayment = 5U, PhotoPayment = 5U },
             new TouristLocation { Id = 3,
-                Position = new Location {Id = 3, Latitude = 43.3150016, Longitude = 21.8955244, Radius = 0.00001 },
+                Position = new Location {Id = 3, Latitude = 43.3150016, Longitude = 21.8955244, Radius = 50.0 },
                 Name = "Holy Trinity Cathedral", Description = "Second only in size to Belgrade's St Sava Temple, this huge Orthodox cathedral, completely restored after being destroyed in a fire in 2001, was consecrated after the liberation from Turkish rule in 1878. The church is a curious mix of Byzantine, Oriental and Western architectural styles and famous for the iconostasis with 48 paintings by Serbian artist Đorđe Krstić – to say nothing of its elaborate, colourful, floor-to-ceiling paintwork.", Tags = new List<string> { "Historic", "Religious", },
                 PhotosUri = new List<string> {
                                                 "https://ak.jogurucdn.com/media/image/p25/place-2015-07-31-5-Holytrinitycathedral6ef60e8fb8165df3d97013453dca736c.jpg",
@@ -45,7 +45,7 @@ namespace NaisCompanion.ViewModels
                                                 },
                 VisitedPayment = 15U, MinVisitDuration = 15U, PostPayment = 5U, PhotoPayment = 5U },
             new TouristLocation { Id = 4,
-                Position = new Location {Id = 4, Latitude = 43.3225905, Longitude = 21.892538, Radius = 0.00001 },
+                Position = new Location {Id = 4, Latitude = 43.3225905, Longitude = 21.892538, Radius = 50.0 },
                 Name = "Niš Fortress", Description = "Though its current incarnation was built by the Turks in the 18th century, there have been forts on this site since ancient Roman times. Today it's a sprawling recreational area with restaurants, cafes, market stalls and ample space for moseying, as well as the 16th-century Bali-beg Mosque. The fortress hosts the Nišville International Jazz Festival each August and Nišomnia, featuring rock and electro acts, in September. The city's main pedestrian boulevard, Obrenovićeva, stretches before the citadel.", Tags = new List<string> { "Historic", "Culture", "Landmark" },
                 PhotosUri = new List<string> {
                                                 "https://cdn.thecrazytourist.com/wp-content/uploads/2018/02/ccimage-shutterstock_741397042.jpg",
@@ -55,7 +55,7 @@ namespace NaisCompanion.ViewModels
                                                 },
                 VisitedPayment = 50U, MinVisitDuration = 60U, PostPayment = 5U, PhotoPayment = 5U },
             new TouristLocation { Id = 5,
-                Position = new Location {Id = 5, Latitude = 43.3201466, Longitude = 21.8927116, Radius = 0.00001 },
+                Position = new Location {Id = 5, Latitude = 43.3201466, Longitude = 21.8927116, Radius = 50.0 },
                 Name = "Monument to the Liberators of Niš", Description = "The Monument to the Liberators of Niš (1937) with its beauty and size takes the central part of King Milan Square, the central square in Niš. This monument is regarded as one of the most important works of art of the Yugoslavian sculpture art, and its author is AntunAugustunčić, a well-known Croatian and Yugoslavian sculptor. At the top of the monument is a horse rider with a flag that symbolizes the arrival of freedom, and the central part represent StevanSinđelić in the Battle of Čegar and KoleRašić calling people from Niš for uprising.", Tags = new List<string> { "Historic", "Monument" },
                 PhotosUri = new List<string> {
                                                 "https://upload.wikimedia.org/wikipedia/commons/6/60/Monument_to_Liberators_-_Nish.jpg",
@@ -63,7 +63,7 @@ namespace NaisCompanion.ViewModels
                                                 },
                 VisitedPayment = 2U, MinVisitDuration = 2U, PostPayment = 5U, PhotoPayment = 5U },
             new TouristLocation { Id = 6,
-                Position = new Location {Id = 6, Latitude = 43.3060353, Longitude = 21.8767311, Radius = 0.00001 },
+                Position = new Location {Id = 6, Latitude = 43.3060353, Longitude = 21.8767311, Radius = 50.0 },
                 Name = "Bubanj Memorial Park", Description = "During World War II, German Nazis shot more than ten thousand residents of Nis and Southeast Serbia on Bubanj hill. According to testimonies of witnesses and the records of the War Crimes Committee, which investigated events at Bubanj after the liberation, it is estimated that more than 10.000 people were executed at this location during the war. Describing this horrifying place, the Committee stated that ditches had been found 20 to 50 meters long with human corpses, and there were several rows of victims in most of them, and there had been also evidence of burning victims in some of them. During the retreat, German succeeded to destroy almost all the documents about the concentration camp and the number of executed people at Bubanj", Tags = new List<string> { "Historic", "Monument", "Landmark" },
                 PhotosUri = new List<string> {
                                                 "http://visitnis.com/wp-content/uploads/2017/09/spomenik-bubanj-bubanj-memorial-site-1170x521.jpg",
@@ -72,7 +72,7 @@ namespace NaisCompanion.ViewModels
                                                 },
                 VisitedPayment = 40U, MinVisitDuration = 60U, PostPayment = 5U, PhotoPayment = 5U },
             new TouristLocation { Id = 7,
-                Position = new Location {Id = 7,Latitude = 43.3084931, Longitude = 21.9461165, Radius = 0.00001 },
+                Position = new Location {Id = 7,Latitude = 43.3084931, Longitude = 21.9461165, Radius = 50.0 },
                 Name = "Mediana", Description = "Mediana was built built between III and the beginning of IV century on the left bank of the Nišava River, beside one of the most important roads, Via militaris. It was located between urban Naissus and thermal springs of Niska Banja and extended over the area of 40 hectares.During the 4th century, overpopulated Naissus, surrounded by walls and towers, ceased to be an attractive place for life for its wealthy citizens, so they spent most of their time in their estates in Mediana.They built there new or restored old villas which served for rest and pleasure.Over time, the villas changed their purpose, and from the places for temporary stay, they became places of luxury life outside the city.", Tags = new List<string> { "Historic", "Monument" },
                 PhotosUri = new List<string> {
                                                 "http://visitnis.com/wp-content/uploads/2017/09/arheolosko-nalaziste-medijana-archeological-sites-mediana.jpg",
@@ -82,7 +82,7 @@ namespace NaisCompanion.ViewModels
                                                 },
                 VisitedPayment = 15U, MinVisitDuration = 15U, PostPayment = 5U, PhotoPayment = 5U },
             new TouristLocation { Id = 8,
-                Position = new Location {Id = 8, Latitude = 43.3179461, Longitude = 21.8953352, Radius = 0.00001 },
+                Position = new Location {Id = 8, Latitude = 43.3179461, Longitude = 21.8953352, Radius = 50.0 },
                 Name = "The Monument of Stevan Sremac and Kalca", Description = "The bronze sculpture depicting the writer, the hunter Kalca, and his loyal companion Capa, his dog, is the work of Ivan Felker, a sculptor from Belgrade. In his novels’’Ivkova slava’’ and ’’Zona Zamfirova’’, Stevan Sremec described virtues, habits, passions and speech of the people from Nis. After these books had been published, written in authentic dialect, Sremac established a new trend in Serbia – writting in the colloquial language.", Tags = new List<string> { "Historic", "Monument", "Culture" },
                 PhotosUri = new List<string> {
                                                 "https://pbs.twimg.com/media/DVsCLJqXUAAn2Kr.jpg",
@@ -90,7 +90,7 @@ namespace NaisCompanion.ViewModels
                                                 },
                 VisitedPayment = 5U, MinVisitDuration = 2U, PostPayment = 5U, PhotoPayment = 5U },
             new TouristLocation { Id = 9,
-                Position = new Location {Id = 9, Latitude = 43.3223311, Longitude = 21.8976115, Radius = 0.00001 },
+                Position = new Location {Id = 9, Latitude = 43.3223311, Longitude = 21.8976115, Radius = 50.0 },
                 Name = "Saban Bajramovic Monument", Description = "A monument to Saban Bajramovic, a well-known Romani composer and singer born in Niš, is located at the top of the amphitheater at the Nišava quay. It is a bronze life-size statue made by Niš sculptor Vlada Ašanin and it was placed there in 2010, on the day of the beginning of the “Nišville Jazz Festival”. About the impact that Saban Bajramovic had on the music world speaks the fact that the American Time magazine put him on the list of the ten most influential blues singers in the world. He left behind more than 700 songs and 20 albums, and the song “Gelem, Gelem” in his interpretation was chosen as the official anthem of all Romani.", Tags = new List<string> { "Historic", "Monument", "Culture" },
                 PhotosUri = new List<string> {
                                                 "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/%C5%A0aban_Bajramovi%C4%87.IMG_3786.jpg/2448px-%C5%A0aban_Bajramovi%C4%87.IMG_3786.jpg",
@@ -98,7 +98,7 @@ namespace NaisCompanion.ViewModels
                                                 },
                 VisitedPayment = 5U, MinVisitDuration = 2U, PostPayment = 5U, PhotoPayment = 5U },
             new TouristLocation { Id = 10,
-                Position = new Location {Id = 10, Latitude = 43.3181532, Longitude = 21.8912093, Radius = 0.00001 },
+                Position = new Location {Id = 10, Latitude = 43.3181532, Longitude = 21.8912093, Radius = 50.0 },
                 Name = "King Aleksandar Monument", Description = "The original monument to King Aleksandar I Karađorđević was erected in 1939, but it was removed and destroyed at the beginning of Communist rule in 1946. The new monument to King Aleksandar I Karađorđević was erected in 2004 in honor of the ruler who was the creator of the idea of the Kingdom of Serbs, Croats and Slovenes. The monument is the work of Belgrade sculptor Zoran Ivanović", Tags = new List<string> { "Historic", "Monument", "Landmark" },
                 PhotosUri = new List<string> {
                                                 "http://wheretoserbia.com/wp-content/uploads/2018/08/King-Aleksandar-The-Unifier-Monument-in-Ni%C5%A1.jpg",
@@ -107,7 +107,7 @@ namespace NaisCompanion.ViewModels
                                                 },
                 VisitedPayment = 5U, MinVisitDuration = 10U, PostPayment = 5U, PhotoPayment = 5U },
             new TouristLocation { Id = 11,
-                Position = new Location {Id = 11, Latitude = 43.3248171, Longitude = 21.8947675, Radius = 0.00001 },
+                Position = new Location {Id = 11, Latitude = 43.3248171, Longitude = 21.8947675, Radius = 50.0 },
                 Name = "Bali-Begova Mosque", Description = "One of the oldest muslim object on Blakan. The location is great because it is located in the very center of the Roman excavations, so the remains of the Roman culture can be seen next to the mosque. ", Tags = new List<string> { "Historic", "Religious", "Landmark" },
                 PhotosUri = new List<string> {
                                                 "https://upload.wikimedia.org/wikipedia/commons/b/bf/Bali_begova_dzamija_0542.JPG",
@@ -116,7 +116,7 @@ namespace NaisCompanion.ViewModels
                                                 },
                 VisitedPayment = 5U, MinVisitDuration = 5U, PostPayment = 5U, PhotoPayment = 5U },
             new TouristLocation { Id = 12,
-                Position = new Location {Id = 12, Latitude = 43.3661258, Longitude = 21.9334674, Radius = 0.00001 },
+                Position = new Location {Id = 12, Latitude = 43.3661258, Longitude = 21.9334674, Radius = 50.0 },
                 Name = "Cegar Monument", Description = "At the place where the trench of Stevan Sindjelic and his soldiers was located, a monument was erected in the shape of a tower – a symbol of the military fortification (1927). The designer of the monument was Djulijan Djupon, a Russian immigrant from Nis, and a bronze bust of Stevan Sindjelic, which is placed in the tower, was made by Yugoslavian sculptor Slavko Miletic. Today, this monument symbolizes the heroism of Stevan Sinđelić and evokes the memory of the fearless fight for freedom.", Tags = new List<string> { "Historic", "Monument", "Landmark" },
                 PhotosUri = new List<string> {
                                                 "http://media.discoversoutheastserbia.com/2016/10/spomenik-na-cegru-3.jpg",
@@ -126,7 +126,7 @@ namespace NaisCompanion.ViewModels
                                                 },
                 VisitedPayment = 30U, MinVisitDuration = 30U, PostPayment = 5U, PhotoPayment = 5U },
             new TouristLocation { Id = 13,
-                Position = new Location {Id = 13, Latitude = 43.3206326, Longitude = 21.8930495, Radius = 0.00001 },
+                Position = new Location {Id = 13, Latitude = 43.3206326, Longitude = 21.8930495, Radius = 50.0 },
                 Name = "The Symphony Orchestra", Description = "Nis Symphony Orchestra, established in 1953, is one of the most important cultural institutions in Serbia and the only philharmonic orchestra in the country outside Belgrade. The repertoire in cludes works of art from the Baroque to 20th century music, including vocal and instrumental pieces, operas, and chamber music. Nis Symphony Orchestra is the founder and organizer of Nis Classical Music Festival (NIMUS), an event with 35 years of tradition.", Tags = new List<string> { "Culture" },
                 PhotosUri = new List<string> {
                                                 "http://visitnis.com/wp-content/uploads/2017/09/simfonijski-orkerstar-nis-thesymphony-orchestra-nis-1170x521.jpg",
@@ -135,7 +135,7 @@ namespace NaisCompanion.ViewModels
                                                 },
                 VisitedPayment = 5U, MinVisitDuration = 5U, PostPayment = 5U, PhotoPayment = 5U },
             new TouristLocation { Id = 14,
-                Position = new Location {Id = 14, Latitude = 43.3196633, Longitude = 21.8995759, Radius = 0.00001 },
+                Position = new Location {Id = 14, Latitude = 43.3196633, Longitude = 21.8995759, Radius = 50.0 },
                 Name = "The National Theater", Description = "Nis was one of the first cities to become part of the history of the Serbian theatre. In 1883, the first act was staged in the city to celebrate the wedding anniversary of King Milan and Queen Natalija Obrenovic. The first theatrical group, “Sindjelic”, was founded on 11 March 1887. In the last 111 years, many important names of the Serbian and Yugoslav theatre have appeared on this stage. Since the foundation, over 10,000 plays have been staged, seen by more than 6 million people, in Nis theatre but also in guest appearances in the country and abroad. Nis National Theatre cherishes the national repertoire, but also presents international classic drama and contemporary plays.", Tags = new List<string> { "Culture" },
                 PhotosUri = new List<string> {
                                                 "http://visitnis.com/wp-content/uploads/2018/01/narodno-pozoriste-nis-the-national-theater-nis-1170x521.jpg",
@@ -147,7 +147,7 @@ namespace NaisCompanion.ViewModels
         private readonly List<RewardLocation> rewardLocationsDataStore = new List<RewardLocation>
         {
             new RewardLocation { Id = 1,
-                Position = new Location {Id = 15, Latitude = 43.3188315, Longitude = 21.8931294, Radius = 0.00001 },
+                Position = new Location {Id = 15, Latitude = 43.3188315, Longitude = 21.8931294, Radius = 50.0 },
                 Name = "Stambolija House", Description = "As in every trip to a distant destination that you visit for the first time - the first step was not easy, and the final point, covered in mist, seemed somehow uncertain and far. It was the mornig fog, not as thick as pea soup, but more like cloth cut into strips, it covered the street of Nikola Pašić in the center of Niš and hugged the old Stambolijski’s house. It seemed the perfect scenery for our first entry into the facility, one and a half century old, not in an enviable condition, somewhat dilapidated, like an old man with a cane on the wooden bench sitting in front of it and watching passers-by on the street. It was exactly the man we expected to see in front of it, Todor Stanković Stambolija, in a white shirt of coarse fabric with colorful wide belt around his waist, pulling the watch on a chain from his pocket vest and wondering if it is time for the morning coffee.", Tags = new List<string> { "Food", "Party" },
                 Url = "http://www.restoranstambolijski.rs",
                 PhotosUri = new List<string> {
@@ -161,7 +161,7 @@ namespace NaisCompanion.ViewModels
                 }
             },
             new RewardLocation { Id = 2,
-                Position = new Location {Id = 16, Latitude = 43.3179402, Longitude = 21.8946318, Radius = 0.00001 },
+                Position = new Location {Id = 16, Latitude = 43.3179402, Longitude = 21.8946318, Radius = 50.0 },
                 Name = "Cezar Fast Food", Description = "Food at Cezar Fast Food restaurants is carefully prepared, and as the right hosts we only choose the best ingredients and we try to have a diverse range of products. It’s important for us to maintain the quality and safety of our products, so we constantly take care of all the raw materials that we use and therefore the final product that we serve to you. What makes our products special is a unique way of preparation and special recipes, and that all our doughs are additivesfree.", Tags = new List<string> { "Food" },
                 Url = "https://www.cezar.rs",
                 PhotosUri = new List<string> {
@@ -174,7 +174,7 @@ namespace NaisCompanion.ViewModels
                 }
             },
             new RewardLocation { Id = 3,
-                Position = new Location {Id = 17, Latitude = 43.3225167, Longitude = 21.901961, Radius = 0.00001 },
+                Position = new Location {Id = 17, Latitude = 43.3225167, Longitude = 21.901961, Radius = 50.0 },
                 Name = "Nislijska Mehana", Description = "Kafana “Nišlijska Mehana” is located in the very center of Niš and started to work on the 8th of March 1996. Already that summer it gained high popularity among locals of Niš and till now has the status of most visited kafana in Niš.", Tags = new List<string> { "Food", "Party" },
                 Url = "https://www.mojakafana.com/Kafane/Nis/Nislijska-mehana.lt.html",
                 PhotosUri = new List<string> {
@@ -188,7 +188,7 @@ namespace NaisCompanion.ViewModels
                 }
             },
             new RewardLocation { Id = 4,
-                Position = new Location {Id = 18, Latitude = 43.3159257, Longitude = 21.9069236, Radius = 0.00001 },
+                Position = new Location {Id = 18, Latitude = 43.3159257, Longitude = 21.9069236, Radius = 50.0 },
                 Name = "Sports Center Cair", Description = "The sports centre was completely reconstructed in 2011 as it was previously seen unfit to host the group stage of 2012 European Men's Handball Championship. The reconstruction has been done according to highest European standards and criteria submitted by EHF, currently making Čair the most modern sporting hall in Serbia. It is fully equipped to host the biggest sports events. It satisfies high standards of sports federations referring to provision of the unhampered communication between the organizers, spectators, sportsmen and media.", Tags = new List<string> { "Sport" },
                 Url = "http://sccair.rs/",
                 PhotosUri = new List<string> {
@@ -204,7 +204,7 @@ namespace NaisCompanion.ViewModels
             },
             new RewardLocation { Id = 5,
 
-                Position = new Location {Id = 19, Latitude = 43.3450757, Longitude = 21.8564247, Radius = 0.00001 },
+                Position = new Location {Id = 19, Latitude = 43.3450757, Longitude = 21.8564247, Radius = 50.0 },
                 Name = "Warzone Paintball", Description = "Paintball Club WARZONE was founded in 2007 in Niš and more than eleven years we are very successful in dealing with this sport, as evidenced by numerous unforgettable adrenaline experiences. Paintball is the most interesting extreme sport that has been playing in the natural environment in the last 20 years, all over the world. The game is based on the adrenaline and entertainment among the players.", Tags = new List<string> { "Sport" },
                 Url = "http://www.paintballnis.com",
                 PhotosUri = new List<string> {
@@ -217,7 +217,7 @@ namespace NaisCompanion.ViewModels
                 }
             },
             new RewardLocation { Id = 6,
-                Position = new Location {Id = 20, Latitude = 43.3157261, Longitude = 21.8918194, Radius = 0.00001 },
+                Position = new Location {Id = 20, Latitude = 43.3157261, Longitude = 21.8918194, Radius = 50.0 },
                 Name = "Eco Bike Tour", Description = "We are a group of young and educated enthusiasts, driven by the love of nature, sport, culture, history and tourism. Niš is our hometown and we believe that it has a lot to offer. However, this great tourism potential has not been used to its maximum and this is something that we want to change. Another thing that we believe in is ecology. This is why we have decided to open this agency. Our goal is to offer to all tourists something brand new in this region – sightseeing on a bike! Accompanied by our charming guides, equipped with comfortable bicycles and all the necessary accessories, our friends and customers can get ready for one unforgettable experience!We are happy to call all the eager people to join us now – let’s cycle together around this beautiful city and meet all its wonderful places.", Tags = new List<string> { "Sport" },
                 Url = "http://ecobikenis.com",
                 PhotosUri = new List<string> {
@@ -230,7 +230,7 @@ namespace NaisCompanion.ViewModels
                 }
             },
             new RewardLocation { Id = 7,
-                Position = new Location {Id = 21, Latitude = 43.3190069, Longitude = 21.8928873, Radius = 0.00001 },
+                Position = new Location {Id = 21, Latitude = 43.3190069, Longitude = 21.8928873, Radius = 50.0 },
                 Name = "Vilin grad", Description = "Cinema", Tags = new List<string> { "Cinema" },
                 Url = "http://www.vilingrad.rs",
                 PhotosUri = new List<string> {
@@ -242,7 +242,7 @@ namespace NaisCompanion.ViewModels
                 }
             },
             new RewardLocation { Id = 8,
-                Position = new Location {Id = 22, Latitude = 43.3215697, Longitude = 21.8934774, Radius = 0.00001 },
+                Position = new Location {Id = 22, Latitude = 43.3215697, Longitude = 21.8934774, Radius =50.0 },
                 Name = "Feedback", Description = "This venue is famous for the best alternative programme in Niš, starting from live acts, all kinds of gigs, via DJ shows, including art exhibitions, book readings, fashion shows and birthday bashes. Here you can have a great time, broaden your horizons, hear the most current and fresh music as well as worldly renounced artists. Remember, anything that happens in Feedback – stays in Feedback.", Tags = new List<string> { "Club", "Party" },
                 Url = "http://klubfeedback.com",
                 PhotosUri = new List<string> {
@@ -253,7 +253,7 @@ namespace NaisCompanion.ViewModels
                     new Reward { Id = 16, Name = "Gratis drink", Description = "Gratis drink for bought ticket", Price = 40, ThumbnailUri = "https://i0.wp.com/www.bestglutenfreebeers.com/wp-content/uploads/2017/08/a.jpg?fit=800%2C800" }                       }
             },
             new RewardLocation { Id = 9,
-                Position = new Location {Id = 23, Latitude = 43.3180765, Longitude = 21.9000772, Radius = 0.00001 },
+                Position = new Location {Id = 23, Latitude = 43.3180765, Longitude = 21.9000772, Radius = 50.0 },
                 Name = "Berta", Description = "Famous and lauded that beer sausages are concerned and now resolved to further expand the offer in the form of a separate meal!", Tags = new List<string> { "Food", "Party" },
                 Url = "https://www.facebook.com/pivnica.berta",
                 PhotosUri = new List<string> {

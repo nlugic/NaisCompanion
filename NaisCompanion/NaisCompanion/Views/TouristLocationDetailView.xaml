@@ -8,7 +8,7 @@
             <cw:CarouselViewControl Orientation="Horizontal"
                                     Position="0"
                                     InterPageSpacing="10"
-                                    ItemsSource="{Binding Location.PhotosUri}"
+                                    ItemsSource="{Binding Path=Location.PhotosUri}"
                                     HorizontalOptions="Fill"
                                     VerticalOptions="StartAndExpand">
                 <cw:CarouselViewControl.ItemTemplate>
@@ -21,15 +21,15 @@
             </cw:CarouselViewControl>
             <StackLayout HorizontalOptions="Fill"
                             VerticalOptions="EndAndExpand">
-                <Label Text="{Binding Location.Description}"
+                <Label Text="{Binding Path=Location.Description}"
                        HorizontalTextAlignment="Center" />
-                <Label Text="{Binding Location.VisitedPayment, StringFormat='For visiting this place, you will earn {0} tokens.'}"
+                <Label Text="{Binding Path=Location.VisitedPayment, StringFormat='For visiting this place, you will earn {0} tokens.'}"
                        FontSize="Medium" />
-                <Label Text="{Binding Location.MinVisitedDuration, StringFormat='Your visit needs to be at least {0} minutes long.'}"
+                <Label Text="{Binding Path=Location.MinVisitDuration, StringFormat='Your visit needs to be at least {0} minutes long.'}"
                        FontSize="Medium" />
-                <Label Text="{Binding Location.PostPayment, StringFormat='For posting your impression about this place, you will earn {0} tokens.'}"
+                <Label Text="{Binding Path=Location.PostPayment, StringFormat='For posting your impression about this place, you will earn {0} tokens.'}"
                        FontSize="Medium" />
-                <Label Text="{Binding Location.PhotoPayment, StringFormat='For posting a photo of this place, you will earn {0} tokens.'}"
+                <Label Text="{Binding Path=Location.PhotoPayment, StringFormat='For posting a photo of this place, you will earn {0} tokens.'}"
                        FontSize="Medium" />
                 <Label Text="{Binding Tags, StringFormat='Tags: {0}.'}"
                        FontSize="Small" />

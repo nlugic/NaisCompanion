@@ -8,5 +8,12 @@ namespace NaisCompanion
     public class CustomMap : Map
     {
         public List<Pin> CustomPins { get; set; }
+        public List<CustomCircle> Circles { get; set; }
+
+        public CustomMap() : base()
+        {
+            Circles = new List<CustomCircle>();
+        }
     }
+
 }

@@ -17,6 +17,7 @@ namespace NaisCompanion.Droid
     public class CustomMapRenderer : MapRenderer, GoogleMap.IInfoWindowAdapter
     {
         List<Pin> customPins;
+        List<CustomCircle> customCircles;
 
         public CustomMapRenderer(Context context) : base(context)
         {
@@ -44,6 +45,7 @@ namespace NaisCompanion.Droid
             {
                 var formsMap = (CustomMap)e.NewElement;
                 customPins = formsMap.CustomPins;
+                customCircles = formsMap.Circles;
                 Control.GetMapAsync(this);
             }
         }
@@ -53,15 +55,37 @@ namespace NaisCompanion.Droid
             base.OnMapReady(map);
 
             NativeMap.SetInfoWindowAdapter(this);
+
+            foreach (CustomCircle circle in customCircles)
+            {
+                var circleOptions = new CircleOptions();
+                circleOptions.InvokeCenter(new LatLng(circle.Position.Latitude, circle.Position.Longitude));
+                circleOptions.InvokeRadius(circle.Radius);
+                circleOptions.InvokeFillColor(0X22FF0000);
+                circleOptions.InvokeStrokeColor(0X22FF0000);
+                circleOptions.InvokeStrokeWidth(0);
+
+                NativeMap.AddCircle(circleOptions);
+            }
         }
 
         protected override MarkerOptions CreateMarker(Pin pin)
         {
             var marker = new MarkerOptions();
-            marker.SetPosition(new LatLng(pin.Position.Latitude, pin.Position.Longitude));
-            marker.SetTitle(pin.Label);
-            marker.SetSnippet(pin.Address);
-            marker.SetIcon(BitmapDescriptorFactory.FromResource(Resource.Drawable.marker));
+            if (pin is CustomPin)
+            {
+                marker.SetPosition(new LatLng(pin.Position.Latitude, pin.Position.Longitude));
+                marker.SetTitle(pin.Label);
+                marker.SetSnippet(pin.Address);
+                marker.SetIcon(BitmapDescriptorFactory.FromResource(Resource.Drawable.marker));
+            }
+            else if(pin is RewardPin)
+            {
+                marker.SetPosition(new LatLng(pin.Position.Latitude, pin.Position.Longitude));
+                marker.SetTitle(pin.Label);
+                marker.SetSnippet(pin.Address);
+                marker.SetIcon(BitmapDescriptorFactory.FromResource(Resource.Drawable.reward1));
+            }
             return marker;
         }
     }

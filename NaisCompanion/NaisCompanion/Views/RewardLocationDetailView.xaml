@@ -8,7 +8,7 @@
             <cw:CarouselViewControl Orientation="Horizontal"
                                     Position="0"
                                     InterPageSpacing="10"
-                                    ItemsSource="{Binding PhotosUri}"
+                                    ItemsSource="{Binding Path=Location.PhotosUri}"
                                     HorizontalOptions="Fill"
                                     VerticalOptions="StartAndExpand">
                 <cw:CarouselViewControl.ItemTemplate>
@@ -21,9 +21,9 @@
             </cw:CarouselViewControl>
             <StackLayout HorizontalOptions="Fill"
                          VerticalOptions="EndAndExpand">
-                <Label Text="{Binding Description}"
+                <Label Text="{Binding Path=Location.Description}"
                        HorizontalTextAlignment="Center" />
-                <Label Text="{Binding Url, StringFormat='Visit {0}!'}"
+                <Label Text="{Binding Path=Location.Url, StringFormat='Visit {0}!'}"
                        FontSize="Small" />
                 <Label Text="{Binding Tags, StringFormat='Tags: {0}.'}"
                        FontSize="Small" />
