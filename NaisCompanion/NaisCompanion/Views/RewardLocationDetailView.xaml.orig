@@ -5,6 +5,32 @@
              x:Class="NaisCompanion.Views.RewardLocationDetailView"
              Title="{Binding Path=Location.Name}">
     <ContentPage.Content>
+<<<<<<< HEAD
+        <StackLayout>
+            <cw:CarouselViewControl Orientation="Horizontal"
+                                    Position="0"
+                                    InterPageSpacing="10"
+                                    ItemsSource="{Binding Path=Location.PhotosUri}"
+                                    HorizontalOptions="Fill"
+                                    VerticalOptions="StartAndExpand">
+                <cw:CarouselViewControl.ItemTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding Path='.'}"
+                               HorizontalOptions="Fill"
+                               VerticalOptions="Fill" />
+                    </DataTemplate>
+                </cw:CarouselViewControl.ItemTemplate>
+            </cw:CarouselViewControl>
+            <StackLayout HorizontalOptions="Fill"
+                         VerticalOptions="EndAndExpand">
+                <Label Text="{Binding Path=Location.Description}"
+                       HorizontalTextAlignment="Center" />
+                <Label Text="{Binding Path=Location.Url, StringFormat='Visit {0}!'}"
+                       FontSize="Small" />
+                <Label Text="{Binding Tags, StringFormat='Tags: {0}.'}"
+                       FontSize="Small" />
+                <!-- lista rewardova -->
+=======
         <ScrollView>
             <StackLayout>
                 <cw:CarouselViewControl ItemsSource="{Binding Path=Location.PhotosUri}"
@@ -76,6 +102,7 @@
                         </cw:CarouselViewControl.ItemTemplate>
                     </cw:CarouselViewControl>
                 </StackLayout>
+>>>>>>> e0b55e7c0839ec4889a31aecf5368465041e1609
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

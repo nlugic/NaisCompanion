@@ -13,6 +13,10 @@ namespace NaisCompanion.ViewModels
             get
             {
                 string res = string.Empty;
+<<<<<<< HEAD
+
+=======
+>>>>>>> e0b55e7c0839ec4889a31aecf5368465041e1609
                 for (short i = 0; i < Location.Tags.Count; ++i)
                 {
                     res += Location.Tags[i];
@@ -21,7 +25,6 @@ namespace NaisCompanion.ViewModels
                 }
 
                 return res;
-            }
             }
         }
 

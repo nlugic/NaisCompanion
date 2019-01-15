@@ -1,31 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-            xmlns:local="clr-namespace:NaisCompanion;assembly=NaisCompanion"
-            x:Class="NaisCompanion.Views.MapPage">
+             xmlns:m="clr-namespace:NaisCompanion;assembly=NaisCompanion"
+             x:Class="NaisCompanion.Views.MapPage" >
     <ContentPage.Content>
         <StackLayout>
-            <local:CustomMap x:Name="map"
-                 IsShowingUser="True"
-                 MapType="Street"
-                 HorizontalOptions="Fill"
-                 VerticalOptions="FillAndExpand" />
+            <StackLayout Orientation="Horizontal"
+                         HeightRequest="30"
+                         Padding="20, 10, 20, 10"
+                         HorizontalOptions="FillAndExpand"
+                         BackgroundColor="#2060a0">
+                <Label Text="{Binding Path=CurrentTourist.Username, StringFormat='User: {0}'}"
+                       FontSize="Large"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       HorizontalOptions="Start" />
+                <Label Text="{Binding Path=CurrentTourist.Tokens, StringFormat='Tokens: {0}'}"
+                       FontSize="Large"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       HorizontalOptions="EndAndExpand" />
+            </StackLayout>
+            <m:CustomMap x:Name="map"
+                         IsShowingUser="True"
+                         MapType="Street"
+                         HorizontalOptions="Fill"
+                         VerticalOptions="FillAndExpand" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
-    
-    <!--<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:m="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
-             x:Class="NaisCompanion.Views.MapPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <m:Map x:Name="map"
-                   IsShowingUser="True"
-                   MapType="Street"
-                   HorizontalOptions="Fill"
-                   VerticalOptions="FillAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
-</ContentPage>-->

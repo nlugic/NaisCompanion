@@ -1,14 +1,10 @@
-﻿using System;
-
-using Android.App;
+﻿using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
 using CarouselView.FormsPlugin.Android;
-using Plugin.Geolocator;
 using Plugin.CurrentActivity;
+using Plugin.Permissions;
 
 namespace NaisCompanion.Droid
 {
@@ -26,6 +22,12 @@ namespace NaisCompanion.Droid
             CarouselViewRenderer.Init();
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
             LoadApplication(new App());
+        }
+
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
+        {
+            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
 }

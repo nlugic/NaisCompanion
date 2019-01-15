@@ -28,7 +28,7 @@ namespace NaisCompanion.ViewModels
 
         public LoginViewModel(ICommand begin, ICommand cont)
         {
-            Title = "Sign in";
+            Title = "NaisCompanion - Sign in";
 
             BeginTourCommand = begin;
             ContinueTourCommand = cont;

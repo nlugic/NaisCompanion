@@ -23,6 +23,8 @@ namespace NaisCompanion.ViewModels
                                                 "http://www.kathmanduandbeyond.com/wp-content/uploads/2017/05/Crveni-Krst-Red-Cross-Concentration-Camp-Nis-Serbia-6.jpg",
                                                 "https://i1.wp.com/followthesisters.com/wp-content/uploads/2016/03/The-monument-of-the-soviet-army-in-front-of-the-concentration-camp-in-Nis.jpg"
                                                 },
+                Comments=new List<Comment>(),
+                UploadedPhotos=new List<ImagePost>(),
                 VisitedPayment = 30U, MinVisitDuration = 30U, PostPayment = 5U, PhotoPayment = 5U },
             new TouristLocation { Id = 2,
                 Position = new Location{Id = 2, Latitude = 43.3122, Longitude = 21.9238, Radius = 50.0 },
@@ -33,6 +35,8 @@ namespace NaisCompanion.ViewModels
                                                 "https://www.timetravelturtle.com/wp-content/uploads/2013/07/Serbia-2013-401_new.jpg",
                                                 "https://upload.wikimedia.org/wikipedia/commons/e/ed/%C4%86ele-kula_-_Stevan_Sin%C4%91eli%C4%87_skull.JPG"
                                                 },
+                Comments=new List<Comment>(),
+                UploadedPhotos=new List<ImagePost>(),
                 VisitedPayment = 15U, MinVisitDuration = 15U, PostPayment = 5U, PhotoPayment = 5U },
             new TouristLocation { Id = 3,
                 Position = new Location {Id = 3, Latitude = 43.3150016, Longitude = 21.8955244, Radius = 50.0 },
@@ -43,6 +47,8 @@ namespace NaisCompanion.ViewModels
                                                 "https://upload.wikimedia.org/wikipedia/commons/4/47/Saborna_crkva_u_Nisu3.jpg",
                                                 "https://c1.staticflickr.com/7/6170/6175560217_a506313475_b.jpg"
                                                 },
+                Comments=new List<Comment>(),
+                UploadedPhotos=new List<ImagePost>(),
                 VisitedPayment = 15U, MinVisitDuration = 15U, PostPayment = 5U, PhotoPayment = 5U },
             new TouristLocation { Id = 4,
                 Position = new Location {Id = 4, Latitude = 43.3225905, Longitude = 21.892538, Radius = 50.0 },
@@ -53,6 +59,9 @@ namespace NaisCompanion.ViewModels
                                                 "https://media2.trover.com/T/58d63e80f2b7d3078000c161/fixedw_large_4x.jpg",
                                                 "https://previews.123rf.com/images/andreyshevchenko/andreyshevchenko1511/andreyshevchenko151100139/48183595-summer-theater-in-nis-fortress-serbia.jpg"
                                                 },
+
+                Comments=new List<Comment>(),
+                UploadedPhotos=new List<ImagePost>(),
                 VisitedPayment = 50U, MinVisitDuration = 60U, PostPayment = 5U, PhotoPayment = 5U },
             new TouristLocation { Id = 5,
                 Position = new Location {Id = 5, Latitude = 43.3201466, Longitude = 21.8927116, Radius = 50.0 },
@@ -61,6 +70,8 @@ namespace NaisCompanion.ViewModels
                                                 "https://upload.wikimedia.org/wikipedia/commons/6/60/Monument_to_Liberators_-_Nish.jpg",
                                                 "https://scontent-frt3-2.cdninstagram.com/vp/372354342d9c50808d120ed2e8cb51d9/5C7FC1C1/t51.2885-15/e35/44230424_306976493242987_7434175780457807872_n.jpg"
                                                 },
+                Comments=new List<Comment>(),
+                UploadedPhotos=new List<ImagePost>(),
                 VisitedPayment = 2U, MinVisitDuration = 2U, PostPayment = 5U, PhotoPayment = 5U },
             new TouristLocation { Id = 6,
                 Position = new Location {Id = 6, Latitude = 43.3060353, Longitude = 21.8767311, Radius = 50.0 },
@@ -70,6 +81,8 @@ namespace NaisCompanion.ViewModels
                                                 "https://assets.atlasobscura.com/media/W1siZiIsInVwbG9hZHMvcGxhY2VfaW1hZ2VzL2M4ZGZmNzk3ZDM4YTFmZDY1MF9CdWJhbmotUGVzbmljZV9zYV9hbWZpdGVhdHJhXzIuanBnIl0sWyJwIiwidGh1bWIiLCJ4MzkwPiJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA4MSAtYXV0by1vcmllbnQiXV0/Bubanj-Pesnice_sa_amfiteatra_2.jpg",
                                                 "http://www.monumentalism.net/wp-content/uploads/2018/07/RS-Nis-Bubanj-1.jpg"
                                                 },
+                Comments=new List<Comment>(),
+                UploadedPhotos=new List<ImagePost>(),
                 VisitedPayment = 40U, MinVisitDuration = 60U, PostPayment = 5U, PhotoPayment = 5U },
             new TouristLocation { Id = 7,
                 Position = new Location {Id = 7,Latitude = 43.3084931, Longitude = 21.9461165, Radius = 50.0 },
@@ -80,6 +93,8 @@ namespace NaisCompanion.ViewModels
                                                 "http://www.panacomp.net/wp-content/uploads/2015/09/featured-mediana2-dragan-miletic-photo.jpg",
                                                 "https://www.andrey-andreev.com/wp-content/uploads/2016/11/IMGP4564.jpg"
                                                 },
+                Comments=new List<Comment>(),
+                UploadedPhotos=new List<ImagePost>(),
                 VisitedPayment = 15U, MinVisitDuration = 15U, PostPayment = 5U, PhotoPayment = 5U },
             new TouristLocation { Id = 8,
                 Position = new Location {Id = 8, Latitude = 43.3179461, Longitude = 21.8953352, Radius = 50.0 },
@@ -88,6 +103,8 @@ namespace NaisCompanion.ViewModels
                                                 "https://pbs.twimg.com/media/DVsCLJqXUAAn2Kr.jpg",
                                                 "https://scontent-atl3-1.cdninstagram.com/vp/7f9382310508ad39aace0e88474adecd/5C735E35/t51.2885-15/e35/43915028_2200408133362759_3303969747302340926_n.jpg"
                                                 },
+                Comments=new List<Comment>(),
+                UploadedPhotos=new List<ImagePost>(),
                 VisitedPayment = 5U, MinVisitDuration = 2U, PostPayment = 5U, PhotoPayment = 5U },
             new TouristLocation { Id = 9,
                 Position = new Location {Id = 9, Latitude = 43.3223311, Longitude = 21.8976115, Radius = 50.0 },
@@ -96,6 +113,8 @@ namespace NaisCompanion.ViewModels
                                                 "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/%C5%A0aban_Bajramovi%C4%87.IMG_3786.jpg/2448px-%C5%A0aban_Bajramovi%C4%87.IMG_3786.jpg",
                                                 "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/%C5%A0aban_Bajramovi%C4%87.IMG_3785.jpg/2448px-%C5%A0aban_Bajramovi%C4%87.IMG_3785.jpg"
                                                 },
+                Comments=new List<Comment>(),
+                UploadedPhotos=new List<ImagePost>(),
                 VisitedPayment = 5U, MinVisitDuration = 2U, PostPayment = 5U, PhotoPayment = 5U },
             new TouristLocation { Id = 10,
                 Position = new Location {Id = 10, Latitude = 43.3181532, Longitude = 21.8912093, Radius = 50.0 },
@@ -105,6 +124,8 @@ namespace NaisCompanion.ViewModels
                                                 "https://upload.wikimedia.org/wikipedia/commons/1/1f/Trg_KA-Konjanik.jpg",
                                                 "https://3.bp.blogspot.com/-rJaIjeee9T0/V9Ny_sq2QAI/AAAAAAAALAU/nu1JCXD82j8WNLYmeOz0ao2e9nl0YoMdQCLcB/s1600/king_alexander_of_yugoslavia_assassination_1934.jpg"
                                                 },
+                Comments=new List<Comment>(),
+                UploadedPhotos=new List<ImagePost>(),
                 VisitedPayment = 5U, MinVisitDuration = 10U, PostPayment = 5U, PhotoPayment = 5U },
             new TouristLocation { Id = 11,
                 Position = new Location {Id = 11, Latitude = 43.3248171, Longitude = 21.8947675, Radius = 50.0 },
@@ -114,6 +135,8 @@ namespace NaisCompanion.ViewModels
                                                 "https://i.pinimg.com/originals/20/45/d5/2045d54550a135bfbd332cebee1b9615.jpg",
                                                 "https://upload.wikimedia.org/wikipedia/commons/7/7a/Bali_begova_dzamija1.jpg"
                                                 },
+                Comments=new List<Comment>(),
+                UploadedPhotos=new List<ImagePost>(),
                 VisitedPayment = 5U, MinVisitDuration = 5U, PostPayment = 5U, PhotoPayment = 5U },
             new TouristLocation { Id = 12,
                 Position = new Location {Id = 12, Latitude = 43.3661258, Longitude = 21.9334674, Radius = 50.0 },
@@ -124,6 +147,8 @@ namespace NaisCompanion.ViewModels
                                                 "https://upload.wikimedia.org/wikipedia/commons/0/03/%C4%8Cegar.jpg",
                                                 "https://upload.wikimedia.org/wikipedia/commons/6/6c/%C4%8Cegar%2C_bista_Stevana_Sin%C4%91eli%C4%87a.jpg"
                                                 },
+                Comments=new List<Comment>(),
+                UploadedPhotos=new List<ImagePost>(),
                 VisitedPayment = 30U, MinVisitDuration = 30U, PostPayment = 5U, PhotoPayment = 5U },
             new TouristLocation { Id = 13,
                 Position = new Location {Id = 13, Latitude = 43.3206326, Longitude = 21.8930495, Radius = 50.0 },
@@ -133,6 +158,8 @@ namespace NaisCompanion.ViewModels
                                                 "http://www.artf.ni.ac.rs/eng/wp-content/uploads/sites/5/2016/08/DSC0201_resize.jpg",
                                                 "http://visitnis.com/wp-content/uploads/2017/09/main.jpg"
                                                 },
+                Comments=new List<Comment>(),
+                UploadedPhotos=new List<ImagePost>(),
                 VisitedPayment = 5U, MinVisitDuration = 5U, PostPayment = 5U, PhotoPayment = 5U },
             new TouristLocation { Id = 14,
                 Position = new Location {Id = 14, Latitude = 43.3196633, Longitude = 21.8995759, Radius = 1000.0 },
@@ -141,6 +168,8 @@ namespace NaisCompanion.ViewModels
                                                 "http://visitnis.com/wp-content/uploads/2018/01/narodno-pozoriste-nis-the-national-theater-nis-1170x521.jpg",
                                                 "https://upload.wikimedia.org/wikipedia/commons/f/fb/Narodno_pozoriste_Nis.jpg"
                                                 },
+                Comments=new List<Comment>(),
+                UploadedPhotos=new List<ImagePost>(),
                 VisitedPayment = 5U, MinVisitDuration = 5U, PostPayment = 5U, PhotoPayment = 5U },
         };
 

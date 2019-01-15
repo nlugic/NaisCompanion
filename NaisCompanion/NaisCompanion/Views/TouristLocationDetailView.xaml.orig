@@ -5,6 +5,38 @@
              x:Class="NaisCompanion.Views.TouristLocationDetailView"
              Title="{Binding Path=Location.Name}">
     <ContentPage.Content>
+<<<<<<< HEAD
+        <StackLayout>
+            <cw:CarouselViewControl Orientation="Horizontal"
+                                    Position="0"
+                                    InterPageSpacing="10"
+                                    ItemsSource="{Binding Path=Location.PhotosUri}"
+                                    HorizontalOptions="Fill"
+                                    VerticalOptions="StartAndExpand">
+                <cw:CarouselViewControl.ItemTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding Path='.'}"
+                               HorizontalOptions="Fill"
+                               VerticalOptions="Fill" />
+                    </DataTemplate>
+                </cw:CarouselViewControl.ItemTemplate>
+            </cw:CarouselViewControl>
+            <StackLayout HorizontalOptions="Fill"
+                            VerticalOptions="EndAndExpand">
+                <Label Text="{Binding Path=Location.Description}"
+                       HorizontalTextAlignment="Center" />
+                <Label Text="{Binding Path=Location.VisitedPayment, StringFormat='For visiting this place, you will earn {0} tokens.'}"
+                       FontSize="Medium" />
+                <Label Text="{Binding Path=Location.MinVisitDuration, StringFormat='Your visit needs to be at least {0} minutes long.'}"
+                       FontSize="Medium" />
+                <Label Text="{Binding Path=Location.PostPayment, StringFormat='For posting your impression about this place, you will earn {0} tokens.'}"
+                       FontSize="Medium" />
+                <Label Text="{Binding Path=Location.PhotoPayment, StringFormat='For posting a photo of this place, you will earn {0} tokens.'}"
+                       FontSize="Medium" />
+                <Label Text="{Binding Tags, StringFormat='Tags: {0}.'}"
+                       FontSize="Small" />
+            <!-- lista postova -->
+=======
         <ScrollView>
             <StackLayout>
                 <cw:CarouselViewControl ItemsSource="{Binding Path=Location.PhotosUri}"
@@ -114,6 +146,7 @@
                         </StackLayout>
                     </StackLayout>
                 </StackLayout>
+>>>>>>> e0b55e7c0839ec4889a31aecf5368465041e1609
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

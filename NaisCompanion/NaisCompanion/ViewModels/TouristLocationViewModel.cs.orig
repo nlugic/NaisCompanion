@@ -3,9 +3,9 @@ using System;
 
 namespace NaisCompanion.ViewModels
 {
-    public class RewardLocationViewModel : TouristViewModel
+    public class TouristLocationViewModel : TouristViewModel
     {
-        public RewardLocation Location { get; private set; }
+        public TouristLocation Location { get; private set; }
 
         public string Title { get; private set; }
         public string Tags
@@ -13,6 +13,10 @@ namespace NaisCompanion.ViewModels
             get
             {
                 string res = string.Empty;
+<<<<<<< HEAD
+
+=======
+>>>>>>> e0b55e7c0839ec4889a31aecf5368465041e1609
                 for (short i = 0; i < Location.Tags.Count; ++i)
                 {
                     res += Location.Tags[i];
@@ -22,12 +26,11 @@ namespace NaisCompanion.ViewModels
 
                 return res;
             }
-            }
         }
 
 
 
-        public RewardLocationViewModel(Tourist current, RewardLocation location)
+        public TouristLocationViewModel(Tourist current, TouristLocation location)
             :base(current)
         {
             Location = location;

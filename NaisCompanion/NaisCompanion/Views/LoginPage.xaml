@@ -35,12 +35,12 @@
                     FontSize="Medium"
                     Command="{Binding BeginTourCommand}"
                     Opacity="0.9"
-                    HorizontalOptions="Center" />
+                    HorizontalOptions="CenterAndExpand" />
             <Button Text="Continue tour"
                     FontSize="Medium"
                     Command="{Binding ContinueTourCommand}"
                     Opacity="0.9"
-                    HorizontalOptions="Center" />
+                    HorizontalOptions="CenterAndExpand" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

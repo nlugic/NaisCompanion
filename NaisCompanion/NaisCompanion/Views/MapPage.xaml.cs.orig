@@ -57,7 +57,6 @@ namespace NaisCompanion.Views
                 map.Pins.Add(location);
                 map.Circles.Add(circle);
             }
-
             foreach (RewardLocation rl in viewModel.RewardLocations)
             {
                 Pin reward = new RewardPin
@@ -72,11 +71,14 @@ namespace NaisCompanion.Views
                 map.Pins.Add(reward);
             }
 
+<<<<<<< HEAD
             if (CrossGeolocator.Current.IsListening)
                 return await Task.FromResult(this);
             bool x = await CrossGeolocator.Current.StartListeningAsync(new TimeSpan(0, 0, 15), 0, true, null);
             CrossGeolocator.Current.PositionChanged += PositionChanged;
 
+=======
+>>>>>>> e0b55e7c0839ec4889a31aecf5368465041e1609
             return await Task.FromResult(this);
         }
 
