@@ -25,7 +25,7 @@ namespace NaisCompanion.ViewModels
         }
 
         public TouristLocationViewModel(Tourist current, TouristLocation location)
-    : base(current)
+            : base(current)
         {
             Location = location;
             Title = location.Name;

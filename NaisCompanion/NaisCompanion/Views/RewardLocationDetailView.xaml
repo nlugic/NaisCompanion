@@ -62,10 +62,9 @@
                                            HorizontalOptions="FillAndExpand"
                                            VerticalOptions="FillAndExpand" />
                                     <StackLayout VerticalOptions="FillAndExpand">
-                                        <Label Text="{Binding Name}"
-                                           FontSize="Medium"/>
+                                        <Label Text="{Binding Name}" />
                                         <Label Text="{Binding Description}"
-                                           FontSize="Micro" />
+                                               FontSize="Micro" />
                                         <Label Text="{Binding Price, StringFormat='Price: {0} tokens'}" />
                                     </StackLayout>
                                     <Button Text="Redeem"

@@ -107,12 +107,13 @@ namespace NaisCompanion.Views
 
                     string question = "Would you like to enter  " + touristLocation.Name + "?";
                     string action = await DisplayActionSheet(question, "Cancel", null, "Enter");
-
-                    await Navigation.PushAsync(new TouristLocationDetailView(viewModel.CurrentTourist, viewModel.TouristLocations.Where
-                    (
-                        tl => tl.Position.Latitude == touristLocation.Position.Latitude
-                        && tl.Position.Longitude == touristLocation.Position.Longitude).FirstOrDefault())
-                    ).ConfigureAwait(true);
+                        
+                    if (action == "Enter")
+                        await Navigation.PushAsync(new TouristLocationDetailView(viewModel.CurrentTourist, viewModel.TouristLocations.Where
+                        (
+                            tl => tl.Position.Latitude == touristLocation.Position.Latitude
+                            && tl.Position.Longitude == touristLocation.Position.Longitude).FirstOrDefault())
+                        ).ConfigureAwait(true);
                 }
             }
 
@@ -145,11 +146,15 @@ namespace NaisCompanion.Views
         {
             base.OnAppearing();
 
+            lblTokens.Text = "Tokens: " + viewModel.CurrentTourist.Tokens.ToString();
+
             if (CrossGeolocator.Current.IsListening)
                 return;
-
-            bool x = await CrossGeolocator.Current.StartListeningAsync(new TimeSpan(0, 0, 15), 0, true, null);
-            CrossGeolocator.Current.PositionChanged += PositionChanged;
+            else
+            {
+                await CrossGeolocator.Current.StartListeningAsync(new TimeSpan(0, 0, 15), 0, true, null);
+                CrossGeolocator.Current.PositionChanged += PositionChanged;
+            }
         }
 
         private double Distance(double lat1, double lon1, double lat2, double lon2, char unit='K')

@@ -11,6 +11,7 @@ namespace NaisCompanion.Models
         public uint Tokens { get; set; }
         public int Timeout { get; set; }
         public List<TouristLocation> Visited { get; set; } = new List<TouristLocation>();
+        public List<ColectedTokens> ColectedTokensCollection { get; set; } = new List<ColectedTokens>();
 
         public Tourist() { }
     }

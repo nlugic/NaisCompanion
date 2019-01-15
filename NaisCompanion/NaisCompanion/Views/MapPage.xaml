@@ -6,16 +6,18 @@
     <ContentPage.Content>
         <StackLayout>
             <StackLayout Orientation="Horizontal"
-                         HeightRequest="30"
-                         Padding="20, 10, 20, 10"
+                         Margin="0"
+                         Padding="20, 5, 20, 5"
                          HorizontalOptions="FillAndExpand"
+                         VerticalOptions="Fill"
                          BackgroundColor="#2060a0">
                 <Label Text="{Binding Path=CurrentTourist.Username, StringFormat='User: {0}'}"
                        FontSize="Large"
                        FontAttributes="Bold"
                        TextColor="White"
                        HorizontalOptions="Start" />
-                <Label Text="{Binding Path=CurrentTourist.Tokens, StringFormat='Tokens: {0}'}"
+                <Label x:Name="lblTokens"
+                       Text="{Binding Path=CurrentTourist.Tokens, StringFormat='Tokens: {0}'}"
                        FontSize="Large"
                        FontAttributes="Bold"
                        TextColor="White"
@@ -24,6 +26,7 @@
             <m:CustomMap x:Name="map"
                          IsShowingUser="True"
                          MapType="Street"
+                         Margin="0"
                          HorizontalOptions="Fill"
                          VerticalOptions="FillAndExpand" />
         </StackLayout>
