@@ -22,7 +22,6 @@ namespace NaisCompanion.ViewModels
 
                 return res;
             }
-            }
         }
 
 

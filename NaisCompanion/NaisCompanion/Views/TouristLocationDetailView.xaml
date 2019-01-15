@@ -65,10 +65,10 @@
                                            VerticalOptions="FillAndExpand" />
                                     <Label Text="{Binding Author, StringFormat='Uploaded by {0}'}"
                                            FontSize="Small"
-                                           HorizontalTextAlignment="End" />
+                                           HorizontalTextAlignment="Center" />
                                     <Label Text="{Binding UploadedDate}"
                                            FontSize="Small"
-                                           HorizontalTextAlignment="End" />
+                                           HorizontalTextAlignment="Center" />
                                 </StackLayout>
                             </DataTemplate>
                         </cw:CarouselViewControl.ItemTemplate>
