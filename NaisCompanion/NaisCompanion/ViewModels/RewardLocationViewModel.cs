@@ -1,7 +1,5 @@
 ﻿using NaisCompanion.Models;
-using System.Linq;
-using System.Collections.Generic;
-using System.Text;
+using System;
 
 namespace NaisCompanion.ViewModels
 {
@@ -12,7 +10,18 @@ namespace NaisCompanion.ViewModels
         public string Title { get; private set; }
         public string Tags
         {
-            get { return (from s in Location?.Tags select s).FirstOrDefault(); }
+            get
+            {
+                string res = string.Empty;
+                for (short i = 0; i < Location.Tags.Count; ++i)
+                {
+                    res += Location.Tags[i];
+                    if (i != Location.Tags.Count - 1)
+                        res += ", ";
+                }
+
+                return res;
+            }
         }
 
         public RewardLocationViewModel(Tourist current, RewardLocation location)

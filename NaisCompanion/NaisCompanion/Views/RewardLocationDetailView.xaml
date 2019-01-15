@@ -2,33 +2,81 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:cw="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
-             x:Class="NaisCompanion.Views.RewardLocationDetailView">
+             x:Class="NaisCompanion.Views.RewardLocationDetailView"
+             Title="{Binding Path=Location.Name}">
     <ContentPage.Content>
-        <StackLayout>
-            <cw:CarouselViewControl Orientation="Horizontal"
-                                    Position="0"
-                                    InterPageSpacing="10"
-                                    ItemsSource="{Binding PhotosUri}"
-                                    HorizontalOptions="Fill"
-                                    VerticalOptions="StartAndExpand">
-                <cw:CarouselViewControl.ItemTemplate>
-                    <DataTemplate>
-                        <Image Source="{Binding Path='.'}"
-                               HorizontalOptions="Fill"
-                               VerticalOptions="Fill" />
-                    </DataTemplate>
-                </cw:CarouselViewControl.ItemTemplate>
-            </cw:CarouselViewControl>
-            <StackLayout HorizontalOptions="Fill"
-                         VerticalOptions="EndAndExpand">
-                <Label Text="{Binding Description}"
-                       HorizontalTextAlignment="Center" />
-                <Label Text="{Binding Url, StringFormat='Visit {0}!'}"
-                       FontSize="Small" />
-                <Label Text="{Binding Tags, StringFormat='Tags: {0}.'}"
-                       FontSize="Small" />
-                <!-- lista rewardova -->
+        <ScrollView>
+            <StackLayout>
+                <cw:CarouselViewControl ItemsSource="{Binding Path=Location.PhotosUri}"
+                                        Orientation="Horizontal"
+                                        Position="0"
+                                        InterPageSpacing="10"
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="FillAndExpand"
+                                        HeightRequest="180">
+                    <cw:CarouselViewControl.ItemTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=.}"
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="FillAndExpand" />
+                        </DataTemplate>
+                    </cw:CarouselViewControl.ItemTemplate>
+                </cw:CarouselViewControl>
+                <StackLayout HorizontalOptions="Fill"
+                             BackgroundColor="#dddddd"
+                             Margin="10"
+                             Padding="10, 15, 10, 15">
+                    <Label Text="{Binding Path=Location.Description}"
+                           FontSize="Medium" />
+                    <Label Text="Visit: "
+                           FontSize="Medium" />
+                    <Label Text="{Binding Path=Location.Url}"
+                           FontSize="Small"
+                           FontAttributes="Bold"
+                           TextColor="Blue"
+                           TextDecorations="Underline">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer CommandParameter="{Binding Path=Location.Url}"
+                                                  Tapped="TapGestureRecognizer_Tapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="{Binding Tags, StringFormat='Tags: {0}.'}"
+                           FontSize="Micro" />
+                    <Label Text="Rewards:"
+                           FontSize="Large"
+                           Margin="0" />
+                    <cw:CarouselViewControl ItemsSource="{Binding Path=Location.Rewards}"
+                                            Orientation="Horizontal"
+                                            Position="0"
+                                            InterPageSpacing="10"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="FillAndExpand"
+                                            HeightRequest="100">
+                        <cw:CarouselViewControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Orientation="Horizontal"
+                                             Padding="10"
+                                             BackgroundColor="#eeeeee"
+                                             HorizontalOptions="FillAndExpand">
+                                    <Image Source="{Binding ThumbnailUri}"
+                                           HorizontalOptions="FillAndExpand"
+                                           VerticalOptions="FillAndExpand" />
+                                    <StackLayout VerticalOptions="FillAndExpand">
+                                        <Label Text="{Binding Name}"
+                                           FontSize="Medium"/>
+                                        <Label Text="{Binding Description}"
+                                           FontSize="Micro" />
+                                        <Label Text="{Binding Price, StringFormat='Price: {0} tokens'}" />
+                                    </StackLayout>
+                                    <Button Text="Redeem"
+                                            TabIndex="{Binding Id}"
+                                            Clicked="Button_Clicked"/>
+                                </StackLayout>
+                            </DataTemplate>
+                        </cw:CarouselViewControl.ItemTemplate>
+                    </cw:CarouselViewControl>
+                </StackLayout>
             </StackLayout>
-        </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

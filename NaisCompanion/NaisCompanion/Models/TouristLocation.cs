@@ -14,7 +14,9 @@ namespace NaisCompanion.Models
         public uint MinVisitDuration { get; set; }
         public uint PostPayment { get; set; }
         public uint PhotoPayment { get; set; }
-
+        public List<Comment> Comments { get; set; }
+        public List<ImagePost> UploadedPhotos { get; set; }
+        
         public TouristLocation() { }
     }
 }

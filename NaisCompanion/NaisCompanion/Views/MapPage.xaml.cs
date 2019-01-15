@@ -19,11 +19,13 @@ namespace NaisCompanion.Views
 
         public MapPage()
         {
+            NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
         }
 
         public MapPage(Tourist active)
 		{
+            NavigationPage.SetHasNavigationBar(this, false);
 			InitializeComponent();
 
             BindingContext = viewModel = new MapViewModel(active);
@@ -64,32 +66,10 @@ namespace NaisCompanion.Views
                 map.Pins.Add(reward);
             }
 
-            //var customMap = new CustomMap
-            //{
-            //    MapType = MapType.Street,
-            //};
-
-            //var pin = new CustomPin
-            //{
-            //    Type = PinType.Place,
-            //    Position = new Position(37.79752, -122.40183),
-            //    Label = "Xamarin San Francisco Office",
-            //    Address = "394 Pacific Ave, San Francisco CA",
-            //    Id = "Xamarin",
-            //    Url = "http://xamarin.com/about/"
-            //};
-
-            //customMap.CustomPins = new List<CustomPin> { pin };
-            //customMap.Pins.Add(pin);
-            //customMap.MoveToRegion(MapSpan.FromCenterAndRadius(
-            //  new Position(37.79752, -122.40183), Distance.FromMiles(1.0)));
-
-            //Content = customMap;
-
             return await Task.FromResult(this);
         }
 
-        public static Task<MapPage> CraeateAsync(Tourist active)
+        public static Task<MapPage> CreateAsync(Tourist active)
         {
             MapPage ret = new MapPage(active);
             return ret.InitializeAsync();
