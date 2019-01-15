@@ -86,12 +86,15 @@ namespace NaisCompanion.Views
         #region EventListeners
         private async void PositionChanged(object sender, PositionEventArgs e)
         {
-            foreach (TouristLocation touristLocation in viewModel.TouristLocations)
+            foreach (TouristLocation touristLocation in viewModel.TouristLocations.Where(x=>!viewModel.CurrentTourist.Visited.Contains(x)))
             {
                 var m = e.Position;
 
                 if (Distance(m.Latitude, m.Longitude, touristLocation.Position.Latitude, touristLocation.Position.Longitude) < (touristLocation.Position.Radius*0.001))
                 {
+
+                    viewModel.CurrentTourist.Visited.Add(touristLocation);
+
                     if (!CrossGeolocator.Current.IsListening)
                         return;
 
